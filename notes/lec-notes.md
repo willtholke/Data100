@@ -26,6 +26,10 @@
     - [Simple Random Sample](#simple-random-sample)
     - [Approximation for sampling](#approximation-for-sampling)
     - [Binomial and Multinomial Probabilities](#binomial-and-multinomial-probabilities)
+    - [Extra: Permutations and Combinations](#extra-permutations-and-combinations)
+      - [Permutations](#permutations)
+      - [Combinations](#combinations)
+    - [Example: The Binomial Coefficient](#example-the-binomial-coefficient)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -115,3 +119,57 @@ If the population is huge compared to the sample, then *random sampling with and
 **Goal:** Count the number of each category that end up in our sample using `np.random.multinomial`
 
 For examples of binomial and multinomial probabilities, start reading from Slide 36 of the [Lecture 2 Slides](https://docs.google.com/presentation/d/15CbbMS0guv9CNJTTDP4h5T4hrNK8rJJ2cO1rmXo3H3Y/edit#slide=id.g10c5bf81273_0_46)!
+
+### Extra: Permutations and Combinations
+
+#### Permutations
+
+Given 5 people named A, B, C, D, & E...
+
+a) **how many ways can ALL of them be arranged in a line?**
+
+Any of the 5 people can be the first in line, and any of the 4 remaining people can be second in line, and any of those 3 remaining people can be third in line, and so on... which looks just like a factorial.
+
+`n! = n * (n-1) * (n - 2) ... *  (n - k)`
+
+`5! = 5 * 4 * 3 * 2 * 1` = 120 ways
+
+b) **how many ways can THREE of them be arranged in a line?**
+
+Any of the 5 people can be first in line, and any of the remaining 4 people can be second in line, and any of those remaining 3 people can be third in line, and nobody can be 4th in line.
+
+`5 * 4 * 3` = 60 ways
+
+`5 * 4 * 3` is equivalent to `5 * 4 * 3 * 2 * 1` / `2 * 1`, which is equivalent to `5!/(5 - 3)!` or `5!/2!`
+
+The above case leads us to the general theorem for **permutations**, which holds the following:
+
+- Having `n` objects and wanting to select `k` of them **in a certain order**, then the number of ways one can do this is `n! / (n - k)!`.
+
+#### Combinations
+
+Selecting three people from the set of 5 individuals {A, B, C, D, E} where **order does not matter**, we see that there are fewer selections. Compare the following:
+
+- Ordered: ABE, EAB, BAE
+- Unordered: ABE, EAB, BAE are all the same, so only one matters
+
+For example, `3! people counted = 3 * 2 * 1 = 6 people = ABE, AEB, BAE, BEA, EAB, EBA`, which are really all the same now (when order doesn't matter)
+
+Because of this, we need to divide our preivous answer by the number of times we overcounted: ``(5!/2!)/(3!)` turns into `5!/(2!3!)`.
+
+The binomial coefficient is `(n k) = n! / (n - k)!k!`, read "n choose k".
+
+### Example: The Binomial Coefficient
+
+**How many ways can we flip a coin (whose flips are independent of one another) 7 times and see 3 heads?**
+
+- Equivalent question: how m any different ways can we order the string "HHHTTT"?
+- There are "7 positions." Choose 3 to be "H." This is 6 choose 4.
+
+```
+( n ) = (   n   )
+( k )   ( n - k )
+```
+
+Choosing k successes is equivalent to choosing n - k failures.
+
