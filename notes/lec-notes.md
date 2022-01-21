@@ -16,7 +16,7 @@
   - [Lecture 1, 01/18/22 (Wk1): Course Overview](#lecture-1-011822-wk1-course-overview)
     - [Associated Reading](#associated-reading)
     - [The Data Science Lifecycle](#the-data-science-lifecycle)
-  - [Lecture 1, 01/20/22 (Wk1): Data Sampling and Probability](#lecture-1-012022-wk1-data-sampling-and-probability)
+  - [Lecture 2, 01/20/22 (Wk1): Data Sampling and Probability](#lecture-2-012022-wk1-data-sampling-and-probability)
     - [Censuses and Surveys](#censuses-and-surveys)
     - [Sampling](#sampling)
     - [Common Non-Random Samples](#common-non-random-samples)
@@ -44,7 +44,7 @@ The following positive feedback loop is called the **data science lifecycle**:
 3) Conduct **exploratory data analysis** (EDA)
 4) Use *prediction* and *inference* to draw conclusions
 
-## Lecture 1, 01/20/22 (Wk1): Data Sampling and Probability
+## Lecture 2, 01/20/22 (Wk1): Data Sampling and Probability
 
 ### Censuses and Surveys
 
