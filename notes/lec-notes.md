@@ -30,6 +30,13 @@
       - [Permutations](#permutations)
       - [Combinations](#combinations)
     - [Example: The Binomial Coefficient](#example-the-binomial-coefficient)
+  - [Lecture 3, 01/25/22 (Wk1): Pandas](#lecture-3-012522-wk1-pandas)
+    - [Resources](#resources)
+    - [`Table` vs. `DataFrame`](#table-vs-dataframe)
+    - [Indexing into DataFrames](#indexing-into-dataframes)
+    - [Series](#series)
+    - [Boolean Array Input and Alternatives](#boolean-array-input-and-alternatives)
+    - [Some Methods](#some-methods)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -170,6 +177,63 @@ The binomial coefficient is `(n k) = n! / (n - k)!k!`, read "n choose k".
 ( n ) = (   n   )
 ( k )   ( n - k )
 ```
-
 Choosing k successes is equivalent to choosing n - k failures.
 
+## Lecture 3, 01/25/22 (Wk1): Pandas
+
+### Resources
+
+- [Data100 Pandas Reference](https://www.textbook.ds100.org/ch/a04/ref_pandas.html)
+
+### `Table` vs. `DataFrame`
+
+The **API** (application programming interface) for the `DataFrame` class is massive. When compared with the `Table` API from Data8, the two just don't compare; `DataFrame` is a much larger API.
+
+**Syntactic sugar** - methods that are useful, but not necessarily for a library (or API) to function
+
+### Indexing into DataFrames
+
+- `loc` - return a subset of rows from a DataFrame
+  - **ex:** `elections**.loc[0:4]` - first four rows from `elections`
+  - Arguments passed to `loc` don't have to be in the same order in which they appear in the DataFrame
+  - Usually preferable to use over `iloc` because it's safer (if the order of columns gets shuffled, the code still works) and more legible (easier to understand what code does when it includes dataframe labels instead of indexes)
+  - [loc: pandas docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html)
+- `iloc`
+  - selects items by numbers
+  - **ex:** `elections.iloc[[1, 2, 3], [0, 1, 2]]`
+  - [`iloc`: pandas docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html)
+- `head`
+  - **ex:** `elections.head(5)` is equivalent to `elections.loc[0:4]`
+  - [`head`: pandas docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html)
+- `tail`
+  - **ex:** `elections.tail(5)`
+  - [`tail`: pandas docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html)
+- `[]`
+  - context sensitive
+  - only takes one argument
+  - **ex:** `elections[["Year", "Candidate", "Result"]]`
+
+### Series
+
+If we rquesting a single column, we're getting back a **series**, not a dataframe. The series class has [its own set of functions](https://pandas.pydata.org/docs/reference/api/pandas.Series.html).
+
+### Boolean Array Input and Alternatives
+
+**Boolean Array Input:**
+
+- `elections[elections["Party"] == "Independent"]`
+
+**Alternatives:**
+  -  `.isin`
+  -  `.str.startswith`
+  -  `.query`
+  -  `.groupby.filter`
+
+### Some Methods
+
+By default, `sample` selects without replacement. Use `replace=True` in the arguments of the method call for replacement
+- `elections.sample(5, replace = True).iloc[:, 0:2]`
+
+`Series.unique` method returns an array of every unique value in a Series
+
+`DataFrame.sort_values` and `Series.sort_values` methods sort a `DataFrame` or `Series` in alphabetical order
