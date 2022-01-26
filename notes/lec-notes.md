@@ -36,7 +36,7 @@
     - [Indexing into DataFrames](#indexing-into-dataframes)
     - [Series](#series)
     - [Boolean Array Input and Alternatives](#boolean-array-input-and-alternatives)
-    - [Some Methods](#some-methods)
+    - [Some More Methods](#some-more-methods)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -59,7 +59,7 @@ The following positive feedback loop is called the **data science lifecycle**:
 
 ### Censuses and Surveys
 
-In general, a **census** is "an official count or **survey** of a **population**, typically recording various details of individuals.
+In general, a **census** is "an official count or **survey** of a **population**, typically recording various details of individuals."
 
 A **survey** is defined as a set of questions, i.e. Decennial Census Questionnaires. Stat 152 (Sampling Surveys) goes into sampling in more detail.
 
@@ -208,7 +208,7 @@ The **API** (application programming interface) for the `DataFrame` class is mas
 - `tail`
   - **ex:** `elections.tail(5)`
   - [`tail`: pandas docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html)
-- `[]`
+- `[]` *"Kool-Aid Notation"*
   - context sensitive
   - only takes one argument
   - **ex:** `elections[["Year", "Candidate", "Result"]]`
@@ -229,11 +229,10 @@ If we rquesting a single column, we're getting back a **series**, not a datafram
   -  `.query`
   -  `.groupby.filter`
 
-### Some Methods
+### Some More Methods
 
-By default, `sample` selects without replacement. Use `replace=True` in the arguments of the method call for replacement
-- `elections.sample(5, replace = True).iloc[:, 0:2]`
+1) By default, `sample` selects without replacement. Use `replace=True` in the arguments of the method call for replacement. **ex:** `elections**.sample(5, replace = True).iloc[:, 0:2]`
 
-`Series.unique` method returns an array of every unique value in a Series
+2) `Series.unique` method returns an array of every unique value in a Series
 
-`DataFrame.sort_values` and `Series.sort_values` methods sort a `DataFrame` or `Series` in alphabetical order
+3) `DataFrame.sort_values` and `Series.sort_values` methods sort a `DataFrame` or `Series` in alphabetical order
