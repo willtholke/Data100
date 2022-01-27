@@ -162,7 +162,7 @@ Selecting three people from the set of 5 individuals {A, B, C, D, E} where **ord
 
 For example, `3! people counted = 3 * 2 * 1 = 6 people = ABE, AEB, BAE, BEA, EAB, EBA`, which are really all the same now (when order doesn't matter)
 
-Because of this, we need to divide our preivous answer by the number of times we overcounted: ``(5!/2!)/(3!)` turns into `5!/(2!3!)`.
+Because of this, we need to divide our preivous answer by the number of times we overcounted: `(5!/2!)/(3!)` turns into `5!/(2!3!)`.
 
 The binomial coefficient is `(n k) = n! / (n - k)!k!`, read "n choose k".
 
