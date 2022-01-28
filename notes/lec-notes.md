@@ -43,8 +43,8 @@
     - [Example: `Groupby.agg`](#example-groupbyagg)
     - [Example: `.filter()`](#example-filter)
     - [Example: `.pivot()`](#example-pivot)
-  - [Lecture 5, 01/25/22 (Wk2): Pandas I](#lecture-5-012522-wk2-pandas-i)
-    - [Resources](#resources-1)
+  - [Lecture 5, 01/28/22 (Wk3): Data Cleaning, EDA](#lecture-5-012822-wk3-data-cleaning-eda)
+    - [Subtitle #1](#subtitle-1)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -223,7 +223,7 @@ The **API** (application programming interface) for the `DataFrame` class is mas
 
 ### Series
 
-If we rquesting a single column, we're getting back a **series**, not a dataframe. The series class has [its own set of functions](https://pandas.pydata.org/docs/reference/api/pandas.Series.html).
+If we're requesting a single column, we're getting back a **series**, not a dataframe. The series class has [its own set of functions](https://pandas.pydata.org/docs/reference/api/pandas.Series.html).
 
 ### Boolean Array Input and Alternatives
 
@@ -281,6 +281,6 @@ babynames["name_lengths"] = babyname_lengths
 
 <img src="images/../../images/lec-4-0.png">
 
-## Lecture 5, 01/25/22 (Wk2): Pandas I
+## Lecture 5, 01/28/22 (Wk3): Data Cleaning, EDA
 
-### Resources
+### Subtitle #1
