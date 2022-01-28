@@ -30,13 +30,21 @@
       - [Permutations](#permutations)
       - [Combinations](#combinations)
     - [Example: The Binomial Coefficient](#example-the-binomial-coefficient)
-  - [Lecture 3, 01/25/22 (Wk1): Pandas](#lecture-3-012522-wk1-pandas)
+  - [Lecture 3, 01/25/22 (Wk2): Pandas I](#lecture-3-012522-wk2-pandas-i)
     - [Resources](#resources)
     - [`Table` vs. `DataFrame`](#table-vs-dataframe)
     - [Indexing into DataFrames](#indexing-into-dataframes)
     - [Series](#series)
     - [Boolean Array Input and Alternatives](#boolean-array-input-and-alternatives)
     - [Some More Methods](#some-more-methods)
+  - [Lecture 4, 01/27/22 (Wk2): Pandas II](#lecture-4-012722-wk2-pandas-ii)
+    - [Example: Custom Sorts](#example-custom-sorts)
+    - [Column Addition](#column-addition)
+    - [Example: `Groupby.agg`](#example-groupbyagg)
+    - [Example: `.filter()`](#example-filter)
+    - [Example: `.pivot()`](#example-pivot)
+  - [Lecture 5, 01/25/22 (Wk2): Pandas I](#lecture-5-012522-wk2-pandas-i)
+    - [Resources](#resources-1)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -179,7 +187,7 @@ The binomial coefficient is `(n k) = n! / (n - k)!k!`, read "n choose k".
 ```
 Choosing k successes is equivalent to choosing n - k failures.
 
-## Lecture 3, 01/25/22 (Wk1): Pandas
+## Lecture 3, 01/25/22 (Wk2): Pandas I
 
 ### Resources
 
@@ -197,7 +205,7 @@ The **API** (application programming interface) for the `DataFrame` class is mas
   - **ex:** `elections**.loc[0:4]` - first four rows from `elections`
   - Arguments passed to `loc` don't have to be in the same order in which they appear in the DataFrame
   - Usually preferable to use over `iloc` because it's safer (if the order of columns gets shuffled, the code still works) and more legible (easier to understand what code does when it includes dataframe labels instead of indexes)
-  - [loc: pandas docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html)
+  - [`loc`: pandas docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html)
 - `iloc`
   - selects items by numbers
   - **ex:** `elections.iloc[[1, 2, 3], [0, 1, 2]]`
@@ -236,3 +244,43 @@ If we rquesting a single column, we're getting back a **series**, not a datafram
 2) `Series.unique` method returns an array of every unique value in a Series
 
 3) `DataFrame.sort_values` and `Series.sort_values` methods sort a `DataFrame` or `Series` in alphabetical order
+
+## Lecture 4, 01/27/22 (Wk2): Pandas II
+
+### Example: Custom Sorts
+
+What does the following code do?
+
+`babynames.query('Sex == "M" and Year == 2020').sort_values("Name", key = lambda x: x.str.len(), ascending = False)`
+
+### Column Addition
+
+```py
+# create a new series of only the lengths
+babyname_lengths = babynames["Name"].str.len()
+
+# add that series to the dataframe as a column
+# this next line adds the column
+babynames["name_lengths"] = babyname_lengths
+```
+
+*Side note:* when dropping a column, you need to add an axis (like `axis = "column"` inside the arguments to the function call)
+
+### Example: `Groupby.agg`
+
+`female_babynames.groupby("Name").agg(ration_to_peak)`
+- Takes the `female_babynames` dataframe and separates unique names (items in the column "Name") and adds a row with a column based on the collection function
+
+*This method will be covered more in Lab 2, released tomorrow (Friday, January 28th)*
+
+### Example: `.filter()`
+
+- [`.filter()`: pandas docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.filter.html)
+
+### Example: `.pivot()`
+
+<img src="images/../../images/lec-4-0.png">
+
+## Lecture 5, 01/25/22 (Wk2): Pandas I
+
+### Resources
