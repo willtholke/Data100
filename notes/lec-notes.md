@@ -44,7 +44,18 @@
     - [Example: `.filter()`](#example-filter)
     - [Example: `.pivot()`](#example-pivot)
   - [Lecture 5, 01/28/22 (Wk3): Data Cleaning, EDA](#lecture-5-012822-wk3-data-cleaning-eda)
-    - [Subtitle #1](#subtitle-1)
+    - [Data Wrangling](#data-wrangling)
+    - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+      - [Some Context](#some-context)
+    - [What should we look for? (there's a lot!)](#what-should-we-look-for-theres-a-lot)
+      - [Structure](#structure)
+      - [Granularity](#granularity)
+      - [Scope](#scope)
+      - [Temporality](#temporality)
+      - [Faithfulness](#faithfulness)
+      - [Missing Data & Input Values](#missing-data--input-values)
+  - [Lecture 6, 01/30/22 (Wk3): Regex](#lecture-6-013022-wk3-regex)
+    - [Regex](#regex)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -283,4 +294,104 @@ babynames["name_lengths"] = babyname_lengths
 
 ## Lecture 5, 01/28/22 (Wk3): Data Cleaning, EDA
 
-### Subtitle #1
+### Data Wrangling
+
+**Data Wrangling** is the process of transforming *raw data* to facilitate subsequent analysis
+
+Addresses issues such as:
+- are numbers stored as integers or as strings? (structure/formatting)
+- missing or corrupted values
+- unit conversion
+- etc.
+
+### Exploratory Data Analysis (EDA)
+
+**Exploratory Data Analysis (EDA)** is the process of *transforming*, *visualizing*, or *summarizing* data to build/confirm understanding of the data and its **provenance** (origin of data; methodology by which data were produced).
+
+EDA is open-ended! Be prepared to find results that may surprise you.
+
+#### Some Context
+
+John Tukey, Princeton Mathematician & Statistician, coined and introduced:
+- *Fast Forier Transform* algorithm
+- *"Bit":* binary digit
+- *EDA!*
+
+
+### What should we look for? (there's a lot!)
+
+This list serves as Sparknotes for the [lecture slides](https://docs.google.com/presentation/d/1R9lPV6ysgxGKe5g9vnfzh7Z6p8R5wmNQtE4k-lZEn74/edit#slide=id.g10ff83c27a6_0_1518).
+
+#### Structure
+
+*Structure* - the "shape" of a data file
+
+- File types: TSV, CSV, JSON, etc.
+- Rectangular data: tables vs. matrices
+
+JSON files are particuilarly useful because they save **metadata**, data about the data! However, there is no `read_data` method in pandas, and the metadata isn't stored in rectangular form.
+
+**Variables** are equivalent to **fields**. Each **record** has a set of variables, and all data are comosed of **records**. Variables are defined by their type
+
+**Feature types:**
+
+```
+Variable ----------------> Qualitative (categorial)
+  |     |                   |                   |
+  |     V                   |                   V
+  |   Discrete (finite)     |   Nominal (No specific ordering)
+  V                         V
+Continuous (infinite)       Ordinal (no order)
+```
+
+**Primary Key:** the column or set of columns in a table that determine the values of the remaining columns.
+
+**Foreign Keys:** the column or sets of columns that reference primary keys in other tables
+
+#### Granularity
+
+*Granularity* - how fine/coarse is each datum
+
+**Question:** what does each record represent? A purchase, a person, a group of users, etc.
+
+**Coarse data** is that which is sampled, average, etc.: combined in some way and not raw 
+
+#### Scope
+ 
+*Scope* - how (in)complete is the data
+
+**Questions:** Does my data cover my area of interest? Are my data too expansive? If so, *filter it*!
+
+Scope is really about **sampling frame**, the population from which the data were sampled. If the sampling frame is too small, do we need more data? If the sampling frame is too big, do we need to filter it? Does the sampling frame capture *reality*? Is anything even real?? (I'm just joking, that's up for debate in [Philos125](https://philosophy.berkeley.edu/courses/detail/350))
+
+#### Temporality
+
+*Temporality* - how the data is situated in time
+
+**Questions:** When was the data collected? Is there periodicity? Diurnal (24-hr) patterns? What about timezones? If you've taken CS61B, you might be familiar with formatting datatime from building Gitlet.
+
+**UNIX-** time measured in seconds since January 1st 1970! Unix time follows Coordinated Universal Time (UTC).
+
+#### Faithfulness
+
+*Faithfulness* - how well does the data represent reality?
+
+**Questions:** do I really trust this data? Does it contain unrealistic or incorrect values? Are there some locations that don't exist, negative counts, typos, large outliers, etc. Does my data violate *obvious dependencies* (such as "age" and "birthday" not matching)? 
+
+**Wait, but what about data falsification?** Try and spot it!
+
+#### Missing Data & Input Values
+
+We can address missing data and input values by:
+- **Dropping data** with missing values (most common approach)
+- **Imputation** (inferring missing values)
+  - Average imputation - replace with an *average* value
+  - Hot deck imputation - replace with a *random* value
+- Directly model missing values during future analysis
+- Drop missing values but check for *induced values* (using domain knowledge, which may potentially come from your domain emphasis)!
+
+## Lecture 6, 01/30/22 (Wk3): Regex
+
+### Regex
+
+Regex, we meet again.
