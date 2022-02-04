@@ -54,8 +54,15 @@
       - [Temporality](#temporality)
       - [Faithfulness](#faithfulness)
       - [Missing Data & Input Values](#missing-data--input-values)
-  - [Lecture 6, 01/30/22 (Wk3): Regex](#lecture-6-013022-wk3-regex)
-    - [Regex](#regex)
+  - [Lecture 6, 01/30/22 (Wk3): Regular Expressions (Regex)](#lecture-6-013022-wk3-regular-expressions-regex)
+    - [Resources](#resources-1)
+      - [Python String Methods](#python-string-methods)
+    - [What is a Regular Expression?](#what-is-a-regular-expression)
+    - [Regex Syntax](#regex-syntax)
+      - [Order of Operations](#order-of-operations)
+      - [Expanded Regex Syntax](#expanded-regex-syntax)
+      - [Convenient Regex](#convenient-regex)
+      - [Even More Regex Features](#even-more-regex-features)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -390,8 +397,41 @@ We can address missing data and input values by:
 - Directly model missing values during future analysis
 - Drop missing values but check for *induced values* (using domain knowledge, which may potentially come from your domain emphasis)!
 
-## Lecture 6, 01/30/22 (Wk3): Regex
+## Lecture 6, 01/30/22 (Wk3): Regular Expressions (Regex)
 
-### Regex
+### Resources
 
-Regex, we meet again.
+- [Data100 Regex Practice](https://ds100.org/sp22/resources/#regex-practice)
+- Check your Regex with [Regex101](https://regex101.com/)
+- Python [re.sub](https://docs.python.org/3/library/re.html#re.sub)
+  - The Pandas equivalent [Series.str.replace](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.replace.html)
+- Python [re.findall](https://docs.python.org/3/library/re.html#re.findall)
+  - The Pandas equivalent [Series.str.findall](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.findall.html)
+
+**Canonicalization** is the process of converting data into a standardized *canonical* form.
+
+#### Python String Methods
+
+<img src="images/../../images/lec-6-0.png">
+
+### What is a Regular Expression?
+
+A **regular expression** (*regex*) is a sequence of characters that specifies a search pattern.
+
+- **Example 1:** `[0=9]{3} - [0-9]{2} - [0-9]{3}` represents the set of all possible social security numbers. 
+- [Example 2](https://tinyurl.com/ds100reg1)
+- [Example 3](https://tinyurl.com/ds100reg02)
+
+### Regex Syntax
+
+#### Order of Operations
+<img src="images/../../images/lec-6-1.png">
+
+#### Expanded Regex Syntax
+<img src="images/../../images/lec-6-2.png">
+
+#### Convenient Regex
+<img src="images/../../images/lec-6-3.png">
+
+#### Even More Regex Features
+<img src="images/../../images/lec-6-4.png">
