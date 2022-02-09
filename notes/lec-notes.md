@@ -67,13 +67,15 @@
     - [Resources](#resources-2)
     - [Goals of Data Visualization](#goals-of-data-visualization)
     - [Distributions](#distributions)
-      - [Bar Plots](#bar-plots)
-      - [Rugplots](#rugplots)
-      - [Box Plots](#box-plots)
-      - [Violin Plots](#violin-plots)
-      - [Scatter Plots](#scatter-plots)
-      - [Hex Plots](#hex-plots)
-      - [Contour Plots](#contour-plots)
+    - [Describing Distributions](#describing-distributions)
+      - [Bar Plot](#bar-plot)
+      - [Rugplot](#rugplot)
+      - [Box Plot](#box-plot)
+      - [Histogram](#histogram)
+      - [Violin Plot](#violin-plot)
+      - [Scatter Plot](#scatter-plot)
+      - [Hex Plot](#hex-plot)
+      - [Contour Plot](#contour-plot)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -465,33 +467,54 @@ A **distribution** describes the frequency at which values of a variable occur:
 - Every value is accounted for **only once**
 - All values add up to 100%
 
-#### Bar Plots
+### Describing Distributions
+
+**Skweness** (somewhat counterintuitive)
+- **Skewed right**: long right tail
+- **Skewed left**: long left tail
+- **Symmetric**: tails are of equal size
+
+**Outliers**
+- What qualifies as an "outlier"? Defining outliers is a judgement call (we'll come back to this later)
+
+**Mode**
+- Local or a global maximum
+- **Unimodal**: single clear maximum
+- **Bimodal**: two modes
+- Note that we need to distinguish between modes and **random noise**; we can use a **Kernel Density Estimate** to do this
+
+#### Bar Plot
 
 - Most comon way of displaying the distribution of a **qyalitative (categorical) variable**
 - The lengths of the bars encode *values*, while widths encode *nothing*
 
 <img src="images/../../images/lec-7-0.png">
 
-#### Rugplots
+#### Rugplot
 
 <img src="images/../../images/lec-7-1.png">
 
-#### Box Plots
+#### Box Plot
 
 <img src="images/../../images/lec-7-2.png">
 
-#### Violin Plots
+#### Histogram
+
+Note that the y-axis label is **density**, not *count*!
+<img src="images/../../images/lec-7-7.png">
+
+#### Violin Plot
 
 <img src="images/../../images/lec-7-3.png">
 
-#### Scatter Plots
+#### Scatter Plot
 
 <img src="images/../../images/lec-7-4.png">
 
-#### Hex Plots
+#### Hex Plot
 
 <img src="images/../../images/lec-7-5.png">
 
-#### Contour Plots
+#### Contour Plot
 
 <img src="images/../../images/lec-7-6.png">
