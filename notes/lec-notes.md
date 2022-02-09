@@ -63,6 +63,17 @@
       - [Expanded Regex Syntax](#expanded-regex-syntax)
       - [Convenient Regex](#convenient-regex)
       - [Even More Regex Features](#even-more-regex-features)
+  - [Lecture 7, 02/8/22 (Wk3): Data Visualizations](#lecture-7-02822-wk3-data-visualizations)
+    - [Resources](#resources-2)
+    - [Goals of Data Visualization](#goals-of-data-visualization)
+    - [Distributions](#distributions)
+      - [Bar Plots](#bar-plots)
+      - [Rugplots](#rugplots)
+      - [Box Plots](#box-plots)
+      - [Violin Plots](#violin-plots)
+      - [Scatter Plots](#scatter-plots)
+      - [Hex Plots](#hex-plots)
+      - [Contour Plots](#contour-plots)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -435,3 +446,52 @@ A **regular expression** (*regex*) is a sequence of characters that specifies a 
 
 #### Even More Regex Features
 <img src="images/../../images/lec-6-4.png">
+
+## Lecture 7, 02/8/22 (Wk3): Data Visualizations
+
+### Resources
+
+- [Lecture 7 Slides: Plotting for Distributions](https://docs.google.com/presentation/d/16I18f4NlOdODeQ20e4YQVwDJ_869MHKKklWeMmYK8IQ/edit#slide=id.g11326e8245b_0_326) – *note that the lecture slides contain comprehensive explanations whereas these notes serve as a quick summary of thoses same slides*
+
+### Goals of Data Visualization
+
+- **Goal 1:** To help your own understanding of your data/results
+- **Goal 2:** To communicate results/conclusions to prove
+
+### Distributions
+
+A **distribution** describes the frequency at which values of a variable occur:
+
+- Every value is accounted for **only once**
+- All values add up to 100%
+
+#### Bar Plots
+
+- Most comon way of displaying the distribution of a **qyalitative (categorical) variable**
+- The lengths of the bars encode *values*, while widths encode *nothing*
+
+<img src="images/../../images/lec-7-0.png">
+
+#### Rugplots
+
+<img src="images/../../images/lec-7-1.png">
+
+#### Box Plots
+
+<img src="images/../../images/lec-7-2.png">
+
+#### Violin Plots
+
+<img src="images/../../images/lec-7-3.png">
+
+#### Scatter Plots
+
+<img src="images/../../images/lec-7-4.png">
+
+#### Hex Plots
+
+<img src="images/../../images/lec-7-5.png">
+
+#### Contour Plots
+
+<img src="images/../../images/lec-7-6.png">
