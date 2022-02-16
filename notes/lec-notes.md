@@ -76,6 +76,17 @@
       - [Scatter Plot](#scatter-plot)
       - [Hex Plot](#hex-plot)
       - [Contour Plot](#contour-plot)
+  - [Lecture 8, 02/10/22 (Wk3): Data Visualizations II](#lecture-8-021022-wk3-data-visualizations-ii)
+    - [Kernel Density Estimation (KDE)](#kernel-density-estimation-kde)
+    - [Creating KDEs](#creating-kdes)
+    - [Summary of KDE](#summary-of-kde)
+  - [Lecture 9, 02/15/22 (Wk3): Modeling and Simple Linear Regression](#lecture-9-021522-wk3-modeling-and-simple-linear-regression)
+    - [Regression Line & Correlation](#regression-line--correlation)
+    - [Parametric Models of Regression](#parametric-models-of-regression)
+    - [The Modeling Process](#the-modeling-process)
+    - [Loss Functions](#loss-functions)
+    - [Minimizing MSE for the SLR Model](#minimizing-mse-for-the-slr-model)
+    - [Evaluating Models](#evaluating-models)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -518,3 +529,110 @@ Note that the y-axis label is **density**, not *count*!
 #### Contour Plot
 
 <img src="images/../../images/lec-7-6.png">
+
+## Lecture 8, 02/10/22 (Wk3): Data Visualizations II
+
+**Topics Covered in the [Slides](https://docs.google.com/presentation/d/1W5PoZ-SwxjpFMrCblOHDqutCP7v4RGNf2s8rnz6d8ak/edit#slide=id.g11391ee6e2e_0_18):**
+- Kernel density estimates (KDEs)
+- Kernels (Gaussian, boxcar, etc.)
+- Overview of:
+  - Information channels
+  - X/Y axes
+  - Color
+  - Markings
+  - Conditioning
+  - Context
+  
+### Kernel Density Estimation (KDE)
+
+Kernel Density Estimation is used to estimate a **probability density function** (or **density curve**) from a set of data.
+  - Just like a histogram, a **density curve**'s total area must sum to 1
+
+### Creating KDEs
+
+- Place a **kernel** at each data point
+- Normalize **kernals** so that total area = 1
+- Sum all **kernels** together
+
+Wait, but what's a kernel? A **kernel** is just a valid density function, meaning that it:
+
+- Must be non-negative for all inputs
+- Must integrate to 1
+
+### Summary of KDE
+
+*A general KDE function from the slides is given below:*
+<img src="images/../../images/lec-8-0.png">
+
+**Notation:**
+- *x* -> any integer; input to our function
+- *n* -> number of observed data points
+- *x_i* -> arbitrary observed datapoint from 1 to n; used to create KDE
+- *\alpha* -> bandwidth or soothing parameter
+- *K_alpha (x, x_i)* -> kernel centered on the observation *i*
+  - Each kernel individually has area 1. We multiply 1/n so that the total area is still 1.
+
+
+## Lecture 9, 02/15/22 (Wk3): Modeling and Simple Linear Regression
+
+### Regression Line & Correlation
+
+The **regression line** is the unique straight line that minimizes the **mean squared error** of estimation among all straight lines.
+
+**Correlation (r)** is the average of the product of `x` and `y` both measured in standard units.
+
+```py
+# r is the correlation coefficient
+slope = r * ((SD of y) / (SD of x))
+
+intercept = mean(y) - slope * mean(x)
+
+residual = observed value - regression estimate
+```
+
+<img src="images/../../images/lec-9-0.png">
+
+### Parametric Models of Regression
+
+A **model** is an idealized representation of a system. We build models to understand *complex phenomena* occuring in the world we live in and *make accurate predicitons* about unseen data.
+
+The **Simple Linear Regression** Model (SLR) is a parametric model, meaning that we choose the "best" parameters for slope and intercept based on data.
+
+### The Modeling Process
+
+- See [Lecture 09: Slide 25](https://docs.google.com/presentation/d/1SnfnL2A0EvSyEYXG_15YYUnP1u-xISkNrholjdaQKbg/edit#slide=id.g1150ea2fb2b_0_3035)
+1) **Choose a model**
+   1) How should we represent the world?
+2) **Choose a loss funciton**
+   1) How do we quantify predictione error?
+3) **Fit the model**
+   1) How do we choose the best parameters of our model given our data?
+4) **Evaluate model performance**
+   1) How do we evaluate whether this process gave rise to a good model?
+   
+### Loss Functions
+
+**Loss functions** characterize the cost, error, or *fit* resulting from a particular choice of model or model parameters
+
+- Loss quantifies how bad a prediction is for a *single* observation
+- If our prediction is close to an actual value, we want *low loss*
+- If our prediction is far from an actual walue, we want *high loss
+
+Some common loss functions are:
+- Squared loss
+- Absolute loss
+- Average loss (empirical risk)
+
+### Minimizing MSE for the SLR Model
+
+- See [Lecture 09: Slide 41](https://docs.google.com/presentation/d/1SnfnL2A0EvSyEYXG_15YYUnP1u-xISkNrholjdaQKbg/edit#slide=id.g1150ea2fb2b_0_132)
+
+The **objective function** is the function to minimize (find the values of `a` and `b` that minimize the average squared loss (MSE) for the SLR model):
+
+### Evaluating Models
+
+To determine if our mdoel was a good fit to our data, we need to:
+
+1) Visualize data and compute statistics
+2) Calculate performance metrics
+3) Look at the residual plot to visualize the difference between actual and predicted `y` values
