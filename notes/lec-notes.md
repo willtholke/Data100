@@ -63,7 +63,7 @@
       - [Expanded Regex Syntax](#expanded-regex-syntax)
       - [Convenient Regex](#convenient-regex)
       - [Even More Regex Features](#even-more-regex-features)
-  - [Lecture 7, 02/8/22 (Wk3): Data Visualizations](#lecture-7-02822-wk3-data-visualizations)
+  - [Lecture 7, 02/8/22 (Wk4): Data Visualizations](#lecture-7-02822-wk4-data-visualizations)
     - [Resources](#resources-2)
     - [Goals of Data Visualization](#goals-of-data-visualization)
     - [Distributions](#distributions)
@@ -76,17 +76,28 @@
       - [Scatter Plot](#scatter-plot)
       - [Hex Plot](#hex-plot)
       - [Contour Plot](#contour-plot)
-  - [Lecture 8, 02/10/22 (Wk3): Data Visualizations II](#lecture-8-021022-wk3-data-visualizations-ii)
+  - [Lecture 8, 02/10/22 (Wk4): Data Visualizations II](#lecture-8-021022-wk4-data-visualizations-ii)
     - [Kernel Density Estimation (KDE)](#kernel-density-estimation-kde)
     - [Creating KDEs](#creating-kdes)
     - [Summary of KDE](#summary-of-kde)
-  - [Lecture 9, 02/15/22 (Wk3): Modeling and Simple Linear Regression](#lecture-9-021522-wk3-modeling-and-simple-linear-regression)
+  - [Lecture 9, 02/15/22 (Wk5): Modeling and Simple Linear Regression](#lecture-9-021522-wk5-modeling-and-simple-linear-regression)
     - [Regression Line & Correlation](#regression-line--correlation)
     - [Parametric Models of Regression](#parametric-models-of-regression)
     - [The Modeling Process](#the-modeling-process)
     - [Loss Functions](#loss-functions)
     - [Minimizing MSE for the SLR Model](#minimizing-mse-for-the-slr-model)
     - [Evaluating Models](#evaluating-models)
+  - [Lecture 10, 02/17/22 (Wk5): Constant Model, Loss, Transformations](#lecture-10-021722-wk5-constant-model-loss-transformations)
+    - [Resources](#resources-3)
+    - [Terminology & Notation](#terminology--notation)
+    - [Minimizing MSE](#minimizing-mse)
+    - [Terminology: Prediction vs. Estimation](#terminology-prediction-vs-estimation)
+    - [The Constant Model](#the-constant-model)
+    - [Fit the Model: Calculus for the General Case](#fit-the-model-calculus-for-the-general-case)
+    - [Summary: Loss Optimization, Calculus, & Critical Points](#summary-loss-optimization-calculus--critical-points)
+    - [Anscombe's quartet](#anscombes-quartet)
+    - [Multiple Linear Regression](#multiple-linear-regression)
+      - [Linear Algebra Representation](#linear-algebra-representation)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -460,7 +471,7 @@ A **regular expression** (*regex*) is a sequence of characters that specifies a 
 #### Even More Regex Features
 <img src="images/../../images/lec-6-4.png">
 
-## Lecture 7, 02/8/22 (Wk3): Data Visualizations
+## Lecture 7, 02/8/22 (Wk4): Data Visualizations
 
 ### Resources
 
@@ -530,7 +541,7 @@ Note that the y-axis label is **density**, not *count*!
 
 <img src="images/../../images/lec-7-6.png">
 
-## Lecture 8, 02/10/22 (Wk3): Data Visualizations II
+## Lecture 8, 02/10/22 (Wk4): Data Visualizations II
 
 **Topics Covered in the [Slides](https://docs.google.com/presentation/d/1W5PoZ-SwxjpFMrCblOHDqutCP7v4RGNf2s8rnz6d8ak/edit#slide=id.g11391ee6e2e_0_18):**
 - Kernel density estimates (KDEs)
@@ -573,7 +584,7 @@ Wait, but what's a kernel? A **kernel** is just a valid density function, meanin
   - Each kernel individually has area 1. We multiply 1/n so that the total area is still 1.
 
 
-## Lecture 9, 02/15/22 (Wk3): Modeling and Simple Linear Regression
+## Lecture 9, 02/15/22 (Wk5): Modeling and Simple Linear Regression
 
 ### Regression Line & Correlation
 
@@ -636,3 +647,54 @@ To determine if our mdoel was a good fit to our data, we need to:
 1) Visualize data and compute statistics
 2) Calculate performance metrics
 3) Look at the residual plot to visualize the difference between actual and predicted `y` values
+
+## Lecture 10, 02/17/22 (Wk5): Constant Model, Loss, Transformations
+
+### Resources
+- See the [Lecture 10 Slides](https://docs.google.com/presentation/d/1tCdhfvPOe7R4T7V9L9VjR_KtJG39UapZuNfNWITMK3Q/edit#slide=id.g10ed28599e7_0_0) for more content.
+  - The notes for this lecture serve as an overview of content, but lack key formulas and computation given the restrictions of LaTeX rendering in markdown on GitHub.
+- See the [Regression HW](https://drive.google.com/file/d/11E87V-ude_uwChqNPxAbLPj62are7iYl/view) from Data 100, Fall 2021. It's likely that the homework released tomorrow (02/18/22) will look very similar.
+
+### Terminology & Notation
+
+<img src="images/../../images/lec-10-0.png">
+
+### Minimizing MSE
+
+Minimizing MSE is really just minimizing squared residuals!
+
+### Terminology: Prediction vs. Estimation
+
+**Esimation** is the task of using data to determine model parameters
+
+**Prediction** is the task of using a model to predict outputs for unseen data
+
+**Least Squares Estimation** is when we choose the parameters that minimize MSE
+
+### The Constant Model
+
+The **summary statistic** summarizes the sample data by always "predicting" the same number – i.e. predicting a constant. It ignores any relationships between variables. In other words, the constant model is a parametric, statistical model.
+
+### Fit the Model: Calculus for the General Case
+
+The derivative of the sum is the sum of derivatives (useful for differentiating with respect to theta)
+
+### Summary: Loss Optimization, Calculus, & Critical Points
+
+**Step 1:** define the *objective function* as average loss
+
+**Step 2:** Find the *minimum* of the objective function
+
+Recall *critical points*! On the homework, we'll prove that MSE has a property of convexity that guarantees that R(theta_hat) is a global minimum
+
+### Anscombe's quartet
+
+*From [Wikipedia](https://en.wikipedia.org/wiki/Anscombe%27s_quartet)*
+
+### Multiple Linear Regression
+
+<img src="images/../../images/lec-10-1.png">
+
+#### Linear Algebra Representation
+
+<img src="images/../../images/lec-10-1.png">
