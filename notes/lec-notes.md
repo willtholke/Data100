@@ -98,6 +98,26 @@
     - [Anscombe's quartet](#anscombes-quartet)
     - [Multiple Linear Regression](#multiple-linear-regression)
       - [Linear Algebra Representation](#linear-algebra-representation)
+  - [Midterm 1 Review Session, 02/19/22 (Wk5):](#midterm-1-review-session-021922-wk5)
+    - [Sampling](#sampling-1)
+      - [Simple Random Sample](#simple-random-sample-1)
+      - [Simple Random Sample w/ Replacement](#simple-random-sample-w-replacement)
+      - [Stratified Random Sample](#stratified-random-sample)
+      - [Quota Sampling](#quota-sampling)
+      - [Convenience Sampling](#convenience-sampling)
+      - [Selection Bias](#selection-bias)
+      - [Response Bias](#response-bias)
+      - [Non-response Bias](#non-response-bias)
+      - [Census](#census)
+    - [Probability](#probability)
+    - [Types of Variables](#types-of-variables)
+      - [Quantitative](#quantitative)
+      - [Qualitative](#qualitative)
+    - [Loss Functions & Linear Regression](#loss-functions--linear-regression)
+      - [L1 Loss (Mean Absolute Loss) [MAS]](#l1-loss-mean-absolute-loss-mas)
+      - [L2 Loss (Mean Squared Loss) [MSE]](#l2-loss-mean-squared-loss-mse)
+  - [Lecture 11, 02/22/22 (Wk6): Ordinary Least Squares (Multiple Linear Regression)](#lecture-11-022222-wk6-ordinary-least-squares-multiple-linear-regression)
+    - [Note](#note)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -698,3 +718,96 @@ Recall *critical points*! On the homework, we'll prove that MSE has a property o
 #### Linear Algebra Representation
 
 <img src="images/../../images/lec-10-1.png">
+
+## Midterm 1 Review Session, 02/19/22 (Wk5):
+
+- [MT1 Review Session Slides](https://docs.google.com/presentation/d/1Bblt8Dr_nr7G6aSvkUvR6knbjGmYzSJV7kzJVTNdIVs/edit)
+
+### Sampling
+
+Sampling is particularly useful for inferring observations about the population by using only a subset of individuals from that population.
+
+#### Simple Random Sample
+
+- Drawn uniformly, meaning every individual has the same probability of being selected
+- Without replacement, meaning an individual can never be selected twice
+
+#### Simple Random Sample w/ Replacement
+
+- Drawn uniformly
+- With replacement, meaning individuals can be selected more than once
+
+#### Stratified Random Sample
+
+- Break up population into multiple groups of interest
+- Take simple random samples from within each group
+
+#### Quota Sampling
+
+- Define various subgroups of the population and then reach those groups however you can
+
+#### Convenience Sampling
+
+- Sample whoever you can get ahold of
+- Extremely prone to bias
+
+#### Selection Bias
+
+- Bias that arises when selecting individuals
+
+#### Response Bias
+
+- Bias that arises when people don't respond truthfully
+
+#### Non-response Bias
+
+- Bias that arises when people don't respond
+
+#### Census
+
+- A census is an official count or survey of a population
+
+### Probability
+
+[Binomial and Multinomial Probabilities](#binomial-and-multinomial-probabilities)
+
+### Types of Variables
+
+#### Quantitative
+
+- **Discrete** - can only take on specific numerical values
+  - number of students
+- **Continuous** - could take on any value in an interval
+  - Ex: price, temperature
+
+
+#### Qualitative
+
+- **Ordinal** - implicit ordering
+  - Yelp stars
+- **Nominal** - no possible ordering
+  - Eye color
+
+### Loss Functions & Linear Regression
+
+#### L1 Loss (Mean Absolute Loss) [MAS]
+
+<img src="images/../../images/mt-prep-1.png">
+
+- Optimal parameter is median
+- Not smooth, not differentiable everywhere
+- Robust to outliers
+
+#### L2 Loss (Mean Squared Loss) [MSE]
+
+<img src="images/../../images/mt-prep-0.png">
+
+- Smooth, differentiable
+- Sensitive to outliers
+- Optimal parameter is mean
+
+## Lecture 11, 02/22/22 (Wk6): Ordinary Least Squares (Multiple Linear Regression)
+
+### Note
+
+This lecture will be particularly useful for Questions 2 and 4 on [Homework 5, Linear Regression](https://ds100.org/sp22/hw/hw05/hw05_student.pdf)
