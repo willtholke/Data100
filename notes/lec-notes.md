@@ -117,7 +117,11 @@
       - [L1 Loss (Mean Absolute Loss) [MAS]](#l1-loss-mean-absolute-loss-mas)
       - [L2 Loss (Mean Squared Loss) [MSE]](#l2-loss-mean-squared-loss-mse)
   - [Lecture 11, 02/22/22 (Wk6): Ordinary Least Squares (Multiple Linear Regression)](#lecture-11-022222-wk6-ordinary-least-squares-multiple-linear-regression)
-    - [Note](#note)
+    - [Associated Readings](#associated-readings)
+    - [Content Overview](#content-overview)
+    - [Recap: Simple vs. Multiple Linear Regression](#recap-simple-vs-multiple-linear-regression)
+  - [Lecture 11, 02/25/22 (Wk6): Ordinary Least Squares](#lecture-11-022522-wk6-ordinary-least-squares)
+    - [Subtitle #1](#subtitle-1)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -808,6 +812,34 @@ Sampling is particularly useful for inferring observations about the population 
 
 ## Lecture 11, 02/22/22 (Wk6): Ordinary Least Squares (Multiple Linear Regression)
 
-### Note
+### Associated Readings
 
-This lecture will be particularly useful for Questions 2 and 4 on [Homework 5, Linear Regression](https://ds100.org/sp22/hw/hw05/hw05_student.pdf)
+- This lecture will be particularly useful for Questions 2 and 4 on [Homework 5, Linear Regression](https://ds100.org/sp22/hw/hw05/hw05_student.pdf)
+
+- Current Slides & Code: [Lecture 11 from Data 100, Spring 2022](https://ds100.org/sp22/lecture/lec11/)
+  - The notes for this lecture serve as an overview of content, but lack key formulas and computation given the restrictions of LaTeX rendering in markdown on GitHub.
+
+- Check out [Lecture 13 from Data 100, Fall 2020](https://docs.google.com/presentation/d/15olJS1Yuk22spzrNx4It6-eLm8gkZM4pFKKOWhKXBUI/edit#slide=id.p)
+
+
+### Content Overview 
+
+In this lecture, we use linear algebra to generalize the simple linear regresison model
+
+- Use **vector dot products** to define the multiple regression model
+- Formulate the problem statement using **vector norms**
+- Use a **geometric derivation** to solve for the optimal **theta** (which is now a vector!)
+- Explore **properties of residuals**
+- Find situations where **unique solutions** exist
+
+### Recap: Simple vs. Multiple Linear Regression
+
+In *simple linear regression*, we solved for **optimal parameters**, we minimize MSE by hand using calculus. 
+
+In *multiple linear regression*, we did not minimize RMSE by hand using calculus–we abstracted away the process.
+
+## Lecture 11, 02/25/22 (Wk6): Ordinary Least Squares 
+
+### Subtitle #1
+
+Text
