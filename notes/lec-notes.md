@@ -120,8 +120,10 @@
     - [Associated Readings](#associated-readings)
     - [Content Overview](#content-overview)
     - [Recap: Simple vs. Multiple Linear Regression](#recap-simple-vs-multiple-linear-regression)
-  - [Lecture 11, 02/25/22 (Wk6): Ordinary Least Squares](#lecture-11-022522-wk6-ordinary-least-squares)
-    - [Subtitle #1](#subtitle-1)
+  - [Lecture 12, 02/25/22 (Wk7): Gradient Descent, sklearn](#lecture-12-022522-wk7-gradient-descent-sklearn)
+    - [Abstraction and Simplicity](#abstraction-and-simplicity)
+    - [Minimization](#minimization)
+    - [Gradient Descent](#gradient-descent)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -838,8 +840,57 @@ In *simple linear regression*, we solved for **optimal parameters**, we minimize
 
 In *multiple linear regression*, we did not minimize RMSE by hand using calculus–we abstracted away the process.
 
-## Lecture 11, 02/25/22 (Wk6): Ordinary Least Squares 
+## Lecture 12, 02/25/22 (Wk7): Gradient Descent, sklearn
 
-### Subtitle #1
+*Note:* today’s lecture is largely in a [Jupyter notebook](https://data100.datahub.berkeley.edu/hub/spawn-pending/willtholke?next=%2Fuser%2Fwilltholke%2Fgit-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FDS-100%252Fsp22%26urlpath%3Dlab%252Ftree%252Fsp22%252Flec%252Flec12%252Flec12.ipynb%26branch%3Dmain)!
 
-Text
+### Abstraction and Simplicity
+
+Instead of computing the MSE nanually, there is a function in the `sklearn` package that we can use to compute the MSE from a list of observations and predictions.
+
+```py
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(df[["total_bill"]], df["tip"])
+df["sklearn_predictions"] = model.predict(df[["total_bill"]])
+```
+
+When we're making predictions, all predictions lie on a plane in $R^3$ or in a hyperplane in $R^n$ where $n > 3$.
+
+### Minimization
+
+All the fancy machine learning algorithms we've learned so far (for example, not something we covered so far, an AI that's trying to figure out whether a picture is of a dog or a cat) are just trying to find **parameters that minimize some function**. We can minimize a mathematical function by using the `scripy.optimize.minimize` function.
+
+```py
+from scripy.optimize import minimize
+minimize(arbitrary, x0 = 6)
+```
+
+### Gradient Descent
+
+**Gradient descent** allows us to find the minima of functions
+- at each step, we compute the steepest direction of the function we’re minimizing, yielding a p-dimensional vector.
+- our next guess for the optimal solution is our current solution minus this p-dimensional vector times a learning rate alpha.
+- for convex functions, the minimum that gradient descent finds is guaranteed to be a global minimum.
+  - optimization procedures on convex functions tend to converge much more quickly than on non-convex functions (even those with a single minima).
+- stochastic gradient descent lets us to rapidly compute an approximation of the gradient. 
+- can be done in batches of data, or even on a single data point.
+
+
+
+
+**Gradient descent** as a recurrence relation: in code!
+
+```py
+def gradient_descent(df, initial_guess, alpha, n):
+    """ Perform n steps of gradient descent on df using learning rate 
+    alpha starting from initial_guess. returns a numpy array of all
+    guesses over time.
+    """
+    guesses = [initial_guess]
+    current_guess = initial_guess
+    while len(guesses) < n:
+        current_guess = current_guess - alpha * df(current_guess)
+        guesses.append(current_guess)
+    return np.array(guesses)
+```
