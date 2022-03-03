@@ -124,7 +124,7 @@
     - [Abstraction and Simplicity](#abstraction-and-simplicity)
     - [Minimization](#minimization)
     - [Gradient Descent](#gradient-descent)
-  - [Lecture 12, 03/03/22 (Wk7): Feature Engineering](#lecture-12-030322-wk7-feature-engineering)
+  - [Lecture 13, 03/03/22 (Wk7): Feature Engineering](#lecture-13-030322-wk7-feature-engineering)
     - [Batch Gradient Descent](#batch-gradient-descent)
     - [Convexity](#convexity)
     - [Feature Engineering](#feature-engineering)
@@ -901,7 +901,7 @@ def gradient_descent(df, initial_guess, alpha, n):
     return np.array(guesses)
 ```
 
-## Lecture 12, 03/03/22 (Wk7): Feature Engineering
+## Lecture 13, 03/03/22 (Wk7): Feature Engineering
 
 ### Batch Gradient Descent
 
