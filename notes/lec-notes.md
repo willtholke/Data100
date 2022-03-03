@@ -120,10 +120,16 @@
     - [Associated Readings](#associated-readings)
     - [Content Overview](#content-overview)
     - [Recap: Simple vs. Multiple Linear Regression](#recap-simple-vs-multiple-linear-regression)
-  - [Lecture 12, 02/25/22 (Wk7): Gradient Descent, sklearn](#lecture-12-022522-wk7-gradient-descent-sklearn)
+  - [Lecture 12, 03/01/22 (Wk7): Gradient Descent, sklearn](#lecture-12-030122-wk7-gradient-descent-sklearn)
     - [Abstraction and Simplicity](#abstraction-and-simplicity)
     - [Minimization](#minimization)
     - [Gradient Descent](#gradient-descent)
+  - [Lecture 12, 03/03/22 (Wk7): Feature Engineering](#lecture-12-030322-wk7-feature-engineering)
+    - [Batch Gradient Descent](#batch-gradient-descent)
+    - [Convexity](#convexity)
+    - [Feature Engineering](#feature-engineering)
+    - [Modeling Non-linear Relationships](#modeling-non-linear-relationships)
+    - [One Hot Encoding](#one-hot-encoding)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -840,7 +846,7 @@ In *simple linear regression*, we solved for **optimal parameters**, we minimize
 
 In *multiple linear regression*, we did not minimize RMSE by hand using calculus–we abstracted away the process.
 
-## Lecture 12, 02/25/22 (Wk7): Gradient Descent, sklearn
+## Lecture 12, 03/01/22 (Wk7): Gradient Descent, sklearn
 
 *Note:* today’s lecture is largely in a [Jupyter notebook](https://data100.datahub.berkeley.edu/hub/spawn-pending/willtholke?next=%2Fuser%2Fwilltholke%2Fgit-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FDS-100%252Fsp22%26urlpath%3Dlab%252Ftree%252Fsp22%252Flec%252Flec12%252Flec12.ipynb%26branch%3Dmain)!
 
@@ -894,3 +900,51 @@ def gradient_descent(df, initial_guess, alpha, n):
         guesses.append(current_guess)
     return np.array(guesses)
 ```
+
+## Lecture 12, 03/03/22 (Wk7): Feature Engineering
+
+### Batch Gradient Descent
+
+**Batch Gradient Descent** uses the entire batch of available data to compute the gradient. However, *the amount of computation grows linearly with the amount of data*. For this reason, we sometimes use **Mini-Batch Gradient Descent**:
+
+- Compute the first gradient on the first 10% (arbitrary choice; a typical choice is 32) of the data. Adjust parameters.
+- Then compute the first gradient on the next 10% of the data. Adjust parameters.
+- ...
+- Then compute the gradient on the last 10% of the data. Adjust parameters.
+- Repeat the process above until we either hit some max number of iterations or our error is below some desired threshold
+
+Each set of **passes** of the data is known as a **training epoch**, which is a term frequently used in the context of machine learning.
+
+For example, if we choose to compute the gradients on 32 data points at a time, we then compute $\frac{n}{32}$ passes for each epoch.
+
+**Stochastic Gradient Descent** is just mini-descent where the batch size is 1; the gradient is computed using only a single data point. Note that we won't prove or implement this in this course.
+
+### Convexity
+
+If a function is **convex**, then the gradient descent is guaranteed to find a global minimum.
+
+*MSE loss is convex*, so gradient descent is always going to be able to minimize the MSE (find the global minimum)
+
+Note that convexity can be represented as a mathematical formula
+
+### Feature Engineering
+
+**Feature Engineering** is the process of *transforming* the raw features *into more informative features* that can be used in modeling or EDA tasks
+
+Feature engineering is extremely useful! We can:
+- Capture *domain knowledge* (relationships between features)
+- Express *non-linear relationships* using *simple linear models*
+- *Encode non-numeric features* to be used as inputs to models
+
+A **feature function** takes our original **d dimensional input** and transforms it into a **p dimensional input**
+
+Note that adding a squared feature allows us to capture a parabolic relationship with a linear model.
+
+### Modeling Non-linear Relationships
+
+[14.3 - Modeling Non-linear Relationships - Data100, Spring 2021](https://www.youtube.com/watch?v=nsq8udfBGGY&list=PLQCcNQgUcDfqQOBZbRKTy4mwEtykpa9O9&index=6)
+
+
+### One Hot Encoding
+
+To be updated when Professor Hug updates the [lecture slides](https://ds100.org/sp22/lecture/lec13/).
