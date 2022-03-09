@@ -130,6 +130,8 @@
     - [Feature Engineering](#feature-engineering)
     - [Modeling Non-linear Relationships](#modeling-non-linear-relationships)
     - [One Hot Encoding](#one-hot-encoding)
+    - [LEcture 14](#lecture-14)
+  - [Lecture 14, 03/08/22 (Wk8): Case Study (HCE): Fairness in Housing Appraisal](#lecture-14-030822-wk8-case-study-hce-fairness-in-housing-appraisal)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -883,8 +885,6 @@ minimize(arbitrary, x0 = 6)
 - can be done in batches of data, or even on a single data point.
 
 
-
-
 **Gradient descent** as a recurrence relation: in code!
 
 ```py
@@ -948,3 +948,11 @@ Note that adding a squared feature allows us to capture a parabolic relationship
 ### One Hot Encoding
 
 To be updated when Professor Hug updates the [lecture slides](https://ds100.org/sp22/lecture/lec13/).
+
+### LEcture 14
+
+Lecture 14 – Case Study (HCE): Fairness in Housing Appraisal
+
+## Lecture 14, 03/08/22 (Wk8): Case Study (HCE): Fairness in Housing Appraisal
+
+This lecture is [pre-recorded](https://ds100.org/sp22/lecture/lec14/) from another semester and is essential for the project but not for midterm 2 or the final.
