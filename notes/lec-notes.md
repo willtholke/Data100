@@ -130,8 +130,20 @@
     - [Feature Engineering](#feature-engineering)
     - [Modeling Non-linear Relationships](#modeling-non-linear-relationships)
     - [One Hot Encoding](#one-hot-encoding)
-    - [LEcture 14](#lecture-14)
+    - [Lecture 14](#lecture-14)
   - [Lecture 14, 03/08/22 (Wk8): Case Study (HCE): Fairness in Housing Appraisal](#lecture-14-030822-wk8-case-study-hce-fairness-in-housing-appraisal)
+  - [Lecture 15, 03/10/22 (Wk8): Cross Validation, Regularization](#lecture-15-031022-wk8-cross-validation-regularization)
+    - [Associated Lecture Slides](#associated-lecture-slides)
+    - [Review](#review)
+    - [The Holdout Method](#the-holdout-method)
+      - [Splitting Data with sklearn](#splitting-data-with-sklearn)
+      - [Hyperparameters](#hyperparameters)
+    - [K-Fold Cross Validation](#k-fold-cross-validation)
+    - [Methods in sklearn](#methods-in-sklearn)
+      - [K-Fold Cross Validation in sklearn](#k-fold-cross-validation-in-sklearn)
+      - [The Holdout Method in sklearn](#the-holdout-method-in-sklearn)
+    - [Test Sets](#test-sets)
+    - [Ridge Regression](#ridge-regression)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -947,12 +959,110 @@ Note that adding a squared feature allows us to capture a parabolic relationship
 
 ### One Hot Encoding
 
-To be updated when Professor Hug updates the [lecture slides](https://ds100.org/sp22/lecture/lec13/).
+See the [lecture slides](https://ds100.org/sp22/lecture/lec13/).
 
-### LEcture 14
+### Lecture 14
 
 Lecture 14 – Case Study (HCE): Fairness in Housing Appraisal
 
 ## Lecture 14, 03/08/22 (Wk8): Case Study (HCE): Fairness in Housing Appraisal
 
 This lecture is [pre-recorded](https://ds100.org/sp22/lecture/lec14/) from another semester and is essential for the project but not for midterm 2 or the final.
+
+## Lecture 15, 03/10/22 (Wk8): Cross Validation, Regularization
+
+### Associated Lecture Slides
+
+- [DS100 Sp22 Lec 15](https://docs.google.com/presentation/d/1-Cga_fOn0dTMt1ss7vNmManX-NUYPXwXDQDAsaInuQM/edit#slide=id.g1140e73d20a_1_0)
+
+### Review
+
+**As we increase the complexity of our model:**
+
+- Training error decreases
+- Variance increases
+
+### The Holdout Method
+
+We can avoid overfitting using the **holdout method**, in which we keep some of our data secret from ourselves. 
+- We train out models on some percentage of the available data points
+- We evaluate the model's performance on the remaining 10 data points
+  - Data used to train is called the **training set**
+  - Held out data is often called the "validation set" or "development set" or "dev set
+
+#### Splitting Data with sklearn
+
+Assume that there is a table `vehicle_data_sample_35` with 35 rows
+
+```py
+from sklearn.utils import shuffle
+training_set, dev_set = np.split(shuffle(vehicle_data_sample_35), [25])
+```
+
+Notice that we shuffle the data; we do this because the data is **contiguous**. We want the data points to be *unordered*
+
+As a reminder, higher model order $\implies$ less error. That is,
+- **training error** decreases
+- **variance** increases
+- **error on test data** decreases, then increases 
+
+We want to pick the model complexity that *minimizes validation set error*.
+
+*Visual explanation: the dotted line is the chosen complexity level*
+<img src="images/../../images/lec-15-0.png">
+
+#### Hyperparameters
+
+In machine learning, a **hyperparameter** is a value that controls the learning process itself:
+
+- For instance, we may have a model which has a hyperparameter called "degree" or $k$ that controlled the order of our polynomial
+
+### K-Fold Cross Validation
+
+**Quality** is the model's error on only the testing set (validation set). We choose the value of a hyperparameter $\alpha$ by choosing the value associated with the lowest MSE
+
+Chunks of data are commonly referred to as a "fold"
+
+With **k-fold cross validation**, we split our data into $k$ equally sized groups (folds)
+- Pick a fold (testing/validation fold)
+- Train model on all but this fold
+- Compute the error on the validation fold
+  - **Repeat the above for all $k$**
+- Calculate the quality as the average of the $k$ validation fold errors
+
+### Methods in sklearn
+
+Assume that...
+- The hyperparameters to try are stored in the dict `parameters_to_try`
+- The loss function is given by `scoring`
+- The number of folds is given by `cv`
+
+#### K-Fold Cross Validation in sklearn
+
+```py
+model_finder = GridSearchCV(estimator = scaled_ridge_model,
+        param_grid = parameters_to_try,
+        scoring = "neg_mean_squared_error",
+        cv = 5)
+
+```
+
+#### The Holdout Method in sklearn
+
+```py
+model_finder = GridSearchCV(estimator = scaled_ridge_model,
+        param_grid = parameters_to_try,
+        scoring = "neg_mean_squared_error",
+        cv = [[training_indices, dev_indices]])
+
+```
+
+### Test Sets
+
+We defined **training set**, **validation (dev) set**, and **test set**. However, what's different between the test set and the other sets is that it is used to *provide an unbiased MSE at the end*.
+
+We can generate **test sets** ourselves or take them from a common data set whose solution is unknown.
+
+### Ridge Regression
+
+See the [Associated Lecture Slides](#associated-lecture-slides)
