@@ -144,6 +144,16 @@
       - [The Holdout Method in sklearn](#the-holdout-method-in-sklearn)
     - [Test Sets](#test-sets)
     - [Ridge Regression](#ridge-regression)
+  - [Lecture 16, 03/15/22 (Wk8): Random Variables](#lecture-16-031522-wk8-random-variables)
+    - [Associated Lecture Slides](#associated-lecture-slides-1)
+    - [Overview](#overview)
+    - [Random Variable](#random-variable)
+    - [Common Random Variables](#common-random-variables)
+    - [Expectation and Variance](#expectation-and-variance)
+    - [Sums of Random Variables](#sums-of-random-variables)
+    - [Properties of Bernoulli Random Variables](#properties-of-bernoulli-random-variables)
+    - [Sample Statistics](#sample-statistics)
+    - [Central Limit Theorem](#central-limit-theorem)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -1066,3 +1076,95 @@ We can generate **test sets** ourselves or take them from a common data set whos
 ### Ridge Regression
 
 See the [Associated Lecture Slides](#associated-lecture-slides)
+
+## Lecture 16, 03/15/22 (Wk8): Random Variables
+
+### Associated Lecture Slides
+
+- [DS100 Sp22 Lec 16](https://docs.google.com/presentation/d/1M2B4JPUO734RqmjCAlZL4iIem-PFVXMeiynp4fxoVFU/edit#slide=id.g10ed28599e7_0_0)
+
+### Overview
+
+We need to know just enough probability to help understand its implications for modeling
+
+- The **sample mean** is the mean of our random sample
+- The **Central Limit Theorem** states the following: if you draw a large random sample with replacement, then, regardless of the population distribution, the probability distribution of the sample mean:
+  - Is roughly normal
+  - Is centered at the population mean
+  - Has a standard deviation of `population SD / sqrt(sample size)`
+- Probabilities are areas of histograms
+
+### Random Variable
+
+A **random variable** is a numerical function of a sample, often denoted with uppercase "variable-like" letters such as `X` and `Y`
+- Also called "sample statistic" or "statistic"
+- Domain (input): all random samples of size `n`
+- Range (output): number line
+
+### Common Random Variables
+
+**Bernoulli(p)**
+- Value 1 with probability p, 0 with probability 1 - p
+- "Indicator" random variable
+
+**Binomial(n, p)**
+- Number of 1s in n independent *Bernoulli(p)* trials
+- Probabilities given by the binomial formula
+
+**Uniform on a finite set of values**
+- Probability of each value is 1 / (size of set)
+- For example, a standard die
+
+**Uniform on the unit interval(0, 1)**
+- Density is flat on (0, 1) and 0 elsewhere
+
+**Normal**
+
+### Expectation and Variance
+
+The **expectation** of a random variable `X` is the weighted average of the values of `X` where the weights are the probabilities of the values
+
+The **variance** is the expected squared deviation from the expectation of `X`
+
+See [Slide 26](https://docs.google.com/presentation/d/1M2B4JPUO734RqmjCAlZL4iIem-PFVXMeiynp4fxoVFU/edit#slide=id.g11d4f5ec14d_0_396) for an example
+
+### Sums of Random Variables
+
+A function of a random variable is also a random variable. That is, creating multiple random variables based on your sample means that functions of those random variables are also random variables
+
+Two random variables `X` and `Y` are **equally distributed** if:
+- `X(s) = Y(s)` for every sample `s`
+- `X = Y`
+
+They are **identically distributed** if:
+- The dist of `X` is the same as the dist of `Y`
+
+They are **independent and identically distributed (IID)** if:
+- `X` and `Y` are identically distributed
+- Knowing the outcome of `X` does not influence your belief of the outcome of `Y` and vice versa ("`X` and `Y` are independent)
+
+**Covariance** is the expected product of deviations from expectation. Correlation (and therefore covariance) measures a linear relationship between X and Y.
+
+### Properties of Bernoulli Random Variables
+
+See [Slide 44](https://docs.google.com/presentation/d/1M2B4JPUO734RqmjCAlZL4iIem-PFVXMeiynp4fxoVFU/edit#slide=id.g1192016999a_0_1074) for an explanation
+
+### Sample Statistics
+
+If we know the distribution of a random variable, we can reliably compute expectation, variance, functions of the random variable, etc.
+
+However, in data science, we often collect **samples**:
+- We don't know the distribution of our population
+- We'd like to use the distribution of the sample to estimate/infer properties of the population
+
+That is, in data science, we want to make a **big assumption**: we sample at random with replacement from the population to get our sample size `n`
+
+The **sample mean** is normally distributed by the Central Limit Theorem
+
+### Central Limit Theorem
+
+No matter the population we are drawing from, if an IID sample of size `n` is large, the probability distribution of the **sample mean** is **roughly normal**!
+
+How large does `n` have to be? If the population is roughly symmetric and unimodal/uniform, we might need only as few as `n = 20`! If the population is skewed, we'll need a bigger `n`. If in doubt, we can bootstrap the sample mean and see if the bootstrapped distribution is bell-shaped.
+
+More on estimators in the next lecture.
