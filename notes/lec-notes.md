@@ -163,6 +163,15 @@
     - [Review: Bootstrapping](#review-bootstrapping)
   - [Lecture 18, 03/29/22 (Wk10): SQL 1](#lecture-18-032922-wk10-sql-1)
     - [Associated Lecture Resources](#associated-lecture-resources-1)
+    - [Brief Databases Overview](#brief-databases-overview)
+    - [Summary of SQL Syntax from Today](#summary-of-sql-syntax-from-today)
+    - [SQL Tables](#sql-tables)
+    - [Keywords and Terminology](#keywords-and-terminology)
+      - [Summary](#summary)
+    - [Tricky Operations with `GROUP BY`](#tricky-operations-with-group-by)
+      - [Summary](#summary-1)
+    - [`DISTINCT` vs. `GROUP BY`](#distinct-vs-group-by)
+    - [Sp19 Examples](#sp19-examples)
   - [Lecture 19, 03/31/22 (Wk10): SQL 2](#lecture-19-033122-wk10-sql-2)
   - [Lecture 20, 04/05/22 (Wk11): PCA](#lecture-20-040522-wk11-pca)
   - [Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression](#lecture-21-041222-wk12-classification-and-logistic-regression)
@@ -1221,6 +1230,68 @@ See [the "Bootstrapping!" section](https://github.com/willtholke/Data8/blob/main
 ### Associated Lecture Resources
 
 - [slides, code, code HTML, recording](https://ds100.org/sp22/lecture/lec18/)
+
+### Brief Databases Overview
+
+A **database management system (DBMS)** is a software system that stores, manages, and facilitates access to one or more **databases**, an organizsed collection of data.
+
+In the real world, data might not be in CSV files. Storing data in a DBMS is useful for non-CSV data types, but we must use languages such as **SQL** (Structured Query Language) to query for our data.
+
+**Data Storage:**
+
+- Reliable storage to survive system crashes and disk failures
+- Optimize to compute on data that does not fit in memory
+- Special data structures to improve performance
+
+**Data Management:**
+
+- Configure how data is organized and who has access
+- Enforce guarantees on the data (e.g. non-negative bank account balance)
+  - Can be used to prevent data anomolies
+  - Ensures safe concurrent operations on data
+
+### Summary of SQL Syntax from Today
+
+- ...
+  
+Now, onwards to the nitty-gritty details.
+
+### SQL Tables
+
+- ...
+  
+### Keywords and Terminology
+
+- `WHERE`
+  - ...
+- `OR`
+    - ...
+- `ORDER BY`
+  - ...
+- `LIMIT`
+  - ...
+- `OFFSET`
+  - ...
+
+#### Summary
+
+- ...
+  
+### Tricky Operations with `GROUP BY`
+
+- ...
+
+#### Summary
+
+- ...
+
+### `DISTINCT` vs. `GROUP BY`
+
+- ...
+
+### Sp19 Examples
+
+- ...
 
 ## Lecture 19, 03/31/22 (Wk10): SQL 2
 
