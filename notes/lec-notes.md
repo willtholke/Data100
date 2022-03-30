@@ -154,6 +154,23 @@
     - [Properties of Bernoulli Random Variables](#properties-of-bernoulli-random-variables)
     - [Sample Statistics](#sample-statistics)
     - [Central Limit Theorem](#central-limit-theorem)
+  - [Lecture 17, 03/17/22 (Wk9): Estimators, Bias, and Variance](#lecture-17-031722-wk9-estimators-bias-and-variance)
+    - [Associated Lecture Resources](#associated-lecture-resources)
+    - [Square Root Law](#square-root-law)
+    - [Prediction vs. Inference](#prediction-vs-inference)
+    - [The Bias-Variance Tradeoff](#the-bias-variance-tradeoff)
+    - [The Snowy Plover dataset [Important for HW 6]](#the-snowy-plover-dataset-important-for-hw-6)
+    - [Review: Bootstrapping](#review-bootstrapping)
+  - [Lecture 18, 03/29/22 (Wk10): SQL 1](#lecture-18-032922-wk10-sql-1)
+    - [Associated Lecture Resources](#associated-lecture-resources-1)
+  - [Lecture 19, 03/31/22 (Wk10): SQL 2](#lecture-19-033122-wk10-sql-2)
+  - [Lecture 20, 04/05/22 (Wk11): PCA](#lecture-20-040522-wk11-pca)
+  - [Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression](#lecture-21-041222-wk12-classification-and-logistic-regression)
+  - [Lecture 22, 04/14/22 (Wk12): Logistic Regression II](#lecture-22-041422-wk12-logistic-regression-ii)
+  - [Lecture 23, 04/19/22 (Wk13): TBD](#lecture-23-041922-wk13-tbd)
+  - [Lecture 24, 04/21/22 (Wk13): Decision Trees](#lecture-24-042122-wk13-decision-trees)
+  - [Lecture 25, 04/26/22 (Wk14): Clustering](#lecture-25-042622-wk14-clustering)
+  - [Lecture 26, 04/28/22 (Wk14): Inference for Modeling](#lecture-26-042822-wk14-inference-for-modeling)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -1167,4 +1184,73 @@ No matter the population we are drawing from, if an IID sample of size `n` is la
 
 How large does `n` have to be? If the population is roughly symmetric and unimodal/uniform, we might need only as few as `n = 20`! If the population is skewed, we'll need a bigger `n`. If in doubt, we can bootstrap the sample mean and see if the bootstrapped distribution is bell-shaped.
 
-More on estimators in the next lecture.
+## Lecture 17, 03/17/22 (Wk9): Estimators, Bias, and Variance
+
+### Associated Lecture Resources
+
+- [Slides, code, code HTML, derivation HTML, recording](https://ds100.org/sp22/lecture/lec17/)
+
+### Square Root Law
+
+**Square Root Law** - if you increase the sample size by some factor $k$, the SD decreases by $\sqrt{k}$.
+
+### Prediction vs. Inference
+
+We build models to...
+1. Make accurate *predictions* about unseen data
+   - We **predict** by using our model to make predictions for the response (output) of unseen data
+2. Understand *complex and real-world phenomena* 
+   - We **infer** by using our model to draw conclusions about the relationship(s) between our features and response
+
+### The Bias-Variance Tradeoff
+
+See [slides 31 through 47](https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_423) for a detailed overview.
+
+For a detailed overview of unbiased estimators, check out [this section in the stat88 textbook](http://stat88.org/textbook/notebooks/Chapter_05/04_Unbiased_Estimators.html).
+
+### The Snowy Plover dataset [Important for HW 6]
+
+See the [Jupyter Notebook HTML render](https://ds100.org/sp22/resources/assets/lectures/lec17/lec17.html).
+
+### Review: Bootstrapping
+
+See [the "Bootstrapping!" section](https://github.com/willtholke/Data8/blob/main/notes/lec-notes.md#bootstrapping) from my Data 8 notes.
+
+## Lecture 18, 03/29/22 (Wk10): SQL 1
+
+### Associated Lecture Resources
+
+- [slides, code, code HTML, recording](https://ds100.org/sp22/lecture/lec18/)
+
+## Lecture 19, 03/31/22 (Wk10): SQL 2
+
+-
+
+## Lecture 20, 04/05/22 (Wk11): PCA
+
+-
+
+## Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression
+
+- 
+
+## Lecture 22, 04/14/22 (Wk12): Logistic Regression II
+
+-
+
+## Lecture 23, 04/19/22 (Wk13): TBD
+
+-
+
+## Lecture 24, 04/21/22 (Wk13): Decision Trees
+
+-
+
+
+## Lecture 25, 04/26/22 (Wk14): Clustering
+
+-
+
+## Lecture 26, 04/28/22 (Wk14): Inference for Modeling
+
+*Note*: Final exam on Friday, 05/13/22 @ 7:00pm-10:00pm
