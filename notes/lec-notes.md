@@ -165,13 +165,13 @@
     - [Associated Lecture Resources](#associated-lecture-resources-1)
     - [Brief Databases Overview](#brief-databases-overview)
     - [Summary of SQL Syntax from Today](#summary-of-sql-syntax-from-today)
+    - [The Magic Comamnd](#the-magic-comamnd)
     - [SQL Tables](#sql-tables)
-    - [Keywords and Terminology](#keywords-and-terminology)
-      - [Summary](#summary)
-    - [Tricky Operations with `GROUP BY`](#tricky-operations-with-group-by)
-      - [Summary](#summary-1)
-    - [`DISTINCT` vs. `GROUP BY`](#distinct-vs-group-by)
-    - [Sp19 Examples](#sp19-examples)
+    - [SQL Terminology](#sql-terminology)
+      - [Properties](#properties)
+      - [Types](#types)
+      - [Constraints](#constraints)
+    - [SQL Keywords](#sql-keywords)
   - [Lecture 19, 03/31/22 (Wk10): SQL 2](#lecture-19-033122-wk10-sql-2)
   - [Lecture 20, 04/05/22 (Wk11): PCA](#lecture-20-040522-wk11-pca)
   - [Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression](#lecture-21-041222-wk12-classification-and-logistic-regression)
@@ -1252,46 +1252,150 @@ In the real world, data might not be in CSV files. Storing data in a DBMS is use
 
 ### Summary of SQL Syntax from Today
 
-- ...
+```SQL
+SELECT <column list>
+FROM <table>
+[WHERE <predicate>]
+[ORDER BY <column list>]
+[LIMIT <number of rows>]
+[OFFSET <number of rows>]
+```
+
+```SQL
+SELECT [DISTINCT] <column expression list>
+FROM <table>
+[WHERE <predicate>]
+[GROUP BY <column list>]
+[HAVING <predicate>]
+[ORDER BY <column list>]
+[LIMIT <number of rows>]
+[OFFSET <number of rows>]
+```
   
+Note: Column expressions may include the aggregation functions `MAX`, `MIN`, and/or `DISTINCT`.
+
 Now, onwards to the nitty-gritty details.
+
+### The Magic Comamnd
+
+iPython knows we're writing in SQL when we write the following cell at the top of a cell:
+
+```SQL
+%%sql
+```
 
 ### SQL Tables
 
 - ...
-  
-### Keywords and Terminology
 
+### SQL Terminology
+
+- use singular, [**CamelCase** ](https://en.wikipedia.org/wiki/Camel_case) names for SQL tables
+- **rows** are called **records** or **tuples**
+- **columns** are called **attributes** or **fields**
+- **tables** are called **relations**
+
+#### Properties
+
+**Every field in a table has three properties:**
+- ColName
+- Type
+- Constraints
+
+#### Types
+
+- INT: Integers
+- REAL: Real numbers $\mathbb{R}$
+- TEXT: Strings of text
+- BLOB: Arbitrary data, e.g. songs, video files, etc.
+- DATETIME: A date and time
+
+#### Constraints
+
+- CHECK: Data cannot be inserted
+- PRIMARY KEY: Specifies that this key is used to uniquely identify rows in the table
+- NOT NULL: Null data cannot be inserted for this column
+- DEFAULT: Provides a value to use if the user does not specify this on insertion
+ss
+### SQL Keywords
+
+- `SELECT`
+```SQL
+%%sql
+SELECT * FROM Table; -- select all rows and columns
+
+SELECT col1, col2 FROM Table; -- select a subset of the columns
+```
+
+- `AS`
+```SQL
+%%sql
+SELECT cute as cuteness FROM Table; -- change the column name
+```
+ 
 - `WHERE`
-  - ...
+
+```SQL
+%%sql
+SELECT col1, col2 FROM Table WHERE cute > 0; -- select only some rows of a table based on a condition
+
+SELECT col1, col2 FROM Table WHERE cute > 0 OR year > 2021;
+```
+
 - `OR`
-    - ...
+
+```SQL
+%%sql
+SELECT col1, col2 FROM Table WHERE cute > 0 OR year > 2021;
+```
+
 - `ORDER BY`
-  - ...
+
+```SQL
+%%sql
+SELECT * FROM Table ORDER BY cute DESC; -- select all columns of Table and order by cute in descending order
+```
+
 - `LIMIT`
-  - ...
+
+```SQL
+%%sql
+SELECT * FROM Table LIMIT 2; -- limit the number of result rows to 2
+```
+
 - `OFFSET`
-  - ...
 
-#### Summary
+Note that, unless you use `ORDER BY`, there is no guaranteed order!
 
-- ...
-  
-### Tricky Operations with `GROUP BY`
+```SQL
+%%sql
+SELECT * From Table LIMIT 2 OFFSET 10; -- see 10 later rows when limiting
+```
 
-- ...
+- `HAVING`
 
-#### Summary
+```SQL
+%%sql
+SELECT col1, COUNT(*)
+FROM Table
+GROUP BY col1
+HAVING MAX(col2) < 5;
+```
 
-- ...
+This above query is equivalent to the following pandas code:
 
-### `DISTINCT` vs. `GROUP BY`
+```py
+groupby('col1').filter(lambda f: max(f['col2'] < 5))
+```
 
-- ...
+- `SUM(colX)`, `MIN(colX)`, `MAX(colX)`
 
-### Sp19 Examples
+Note that `colX` is some arbitrary column in your table
 
-- ...
+```SQL
+%%sql
+SELECT col1, MAX(col2) FROM Table GROUP BY col1 -- select the maximum value from col2 for each unique value in col1
+```
 
 ## Lecture 19, 03/31/22 (Wk10): SQL 2
 
