@@ -166,7 +166,6 @@
     - [Brief Databases Overview](#brief-databases-overview)
     - [Summary of SQL Syntax from Today](#summary-of-sql-syntax-from-today)
     - [The Magic Comamnd](#the-magic-comamnd)
-    - [SQL Tables](#sql-tables)
     - [SQL Terminology](#sql-terminology)
       - [Properties](#properties)
       - [Types](#types)
@@ -1274,19 +1273,9 @@ FROM <table>
   
 Note: Column expressions may include the aggregation functions `MAX`, `MIN`, and/or `DISTINCT`.
 
-Now, onwards to the nitty-gritty details.
-
 ### The Magic Comamnd
 
-iPython knows we're writing in SQL when we write the following cell at the top of a cell:
-
-```SQL
-%%sql
-```
-
-### SQL Tables
-
-- ...
+iPython knows we're writing in SQL when we write the following cell at the top of a cell: `%%sql`
 
 ### SQL Terminology
 
@@ -1304,19 +1293,20 @@ iPython knows we're writing in SQL when we write the following cell at the top o
 
 #### Types
 
-- INT: Integers
-- REAL: Real numbers $\mathbb{R}$
-- TEXT: Strings of text
-- BLOB: Arbitrary data, e.g. songs, video files, etc.
-- DATETIME: A date and time
+- **INT:** Integers
+- **REAL:** Real numbers $\mathbb{R}$
+- **TEXT:** Strings of text
+- **BLOB:** Arbitrary data, e.g. songs, video files, etc.
+- **DATETIME:** A date and time
 
 #### Constraints
 
-- CHECK: Data cannot be inserted
-- PRIMARY KEY: Specifies that this key is used to uniquely identify rows in the table
-- NOT NULL: Null data cannot be inserted for this column
-- DEFAULT: Provides a value to use if the user does not specify this on insertion
+- **CHECK:** Data cannot be inserted
+- **PRIMARY KEY:** Specifies that this key is used to uniquely identify rows in the table
+- **NOT NULL:** Null data cannot be inserted for this column
+- **DEFAULT:** Provides a value to use if the user does not specify this on insertion
 ss
+
 ### SQL Keywords
 
 - `SELECT`
@@ -1394,7 +1384,7 @@ Note that `colX` is some arbitrary column in your table
 
 ```SQL
 %%sql
-SELECT col1, MAX(col2) FROM Table GROUP BY col1 -- select the maximum value from col2 for each unique value in col1
+SELECT col1, MAX(col2) FROM Table GROUP BY col1; -- select the maximum value from col2 for each unique value in col1
 ```
 
 ## Lecture 19, 03/31/22 (Wk10): SQL 2
