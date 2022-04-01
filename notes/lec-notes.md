@@ -172,7 +172,15 @@
       - [Constraints](#constraints)
     - [SQL Keywords](#sql-keywords)
   - [Lecture 19, 03/31/22 (Wk10): SQL 2](#lecture-19-033122-wk10-sql-2)
+    - [Downsides of `pd.read_sql()`](#downsides-of-pdread_sql)
+    - [.tsv Files](#tsv-files)
+    - [`LIKE`](#like)
+    - [`CAST`](#cast)
+    - [Joins](#joins)
+    - [PCA](#pca)
+    - [Matrix Decomposition Summary](#matrix-decomposition-summary)
   - [Lecture 20, 04/05/22 (Wk11): PCA](#lecture-20-040522-wk11-pca)
+    - [Singular Value Decomposition](#singular-value-decomposition)
   - [Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression](#lecture-21-041222-wk12-classification-and-logistic-regression)
   - [Lecture 22, 04/14/22 (Wk12): Logistic Regression II](#lecture-22-041422-wk12-logistic-regression-ii)
   - [Lecture 23, 04/19/22 (Wk13): TBD](#lecture-23-041922-wk13-tbd)
@@ -1389,9 +1397,84 @@ SELECT col1, MAX(col2) FROM Table GROUP BY col1; -- select the maximum value fro
 
 ## Lecture 19, 03/31/22 (Wk10): SQL 2
 
--
+### Downsides of `pd.read_sql()`
+
+1. Using code as an argument to `pd.read_sql()` is error prone, but the error messages are cryptic: 
+
+Instead, we'll often write SQL code using the SQL Magic command
+
+### .tsv Files
+
+.tsv files contain tab separated data, but we need to convert .tsv files into .db format so that SQL can be used instead. There is a command on the DataHub machines called sqlite3, which compresses the file and puts it in a format so that we can use sqlalchemy to query the data
+
+Let's create a sqlalchemy connection:
+```py
+engine = sqlalchemy.create_engine("sqlite:///data/database.db")
+```
+
+Now, we can request the list of Tables:
+```py
+tables = pd.read_sql("SELECT sql FROM sqlite_master WHERE table='table';", connection)
+table1 = tables["sql"][0]
+table2 = tables["sql"][1]
+...
+```
+
+If we tried `pd.read_csv()` on the data before we did the above, we'd get an error; `pd_read_csv()` can't handle a ton of data in a file of size, say, 700 MB
+
+### `LIKE`
+
+The `LIKE` operator tests whether a string matches a pattern (similar to a regex, but with much simpler syntax). To select movies from a table `t` that has a column `time` where the string is on the hour, we would write the following:
+
+```SQL
+%%sql
+SELECT * FROM t WHERE t.time LIKE ‘%:00%’
+```
+
+### `CAST`
+
+The `CAST` keyword converts a table column to another type. This keyword is particularly useful if we're missing data
+
+### Joins
+
+Example of an **inner join**:
+
+```SQL
+%%%sql
+SELECT tname, latitude, temp
+FROM cities, temps
+WHERE name = c
+```
+
+A cross join puts all pairs of rows together in the resulting table. This is also known as the **Cartesian product**
+
+For more examples and use of the `JOIN` keyword, check out [slide 27 and beyond](https://docs.google.com/presentation/d/1EdxE8dlOpaJ09aloqeR9-3avz4f5fVTeZgfWSgbL6DM/edit#slide=id.g120e623da8f_1_209)
+
+### PCA
+
+**PCA** is a technique for high dimensional EDA and featurization.
+
+If we have a dataset of **N** observations with **d** attributes, we can think of the data as being **N** vectors in a **d**-dimensional space. For example, a dataset with 3 columns will be in 3-dimensional space.
+
+Matrix decomposition (a.k.a Matrix Factorization) is the opposite of matrix multiplication: taking a matrix and decomposing it into two separate matrices.
+
+**Rank** is the maximum number of linearly independent rows in a Table (matrix)
+
+### Matrix Decomposition Summary
+
+Decomposing an MxN matrix `X` into two matrix factors of size MxQ and QxN does not yield a unique answer.
+
+- The size of the smallest matrices are when Q = the rank R, i.e. MxR and RxN
+  
+**Singular Value Decomposition** decomposes `X` into matrices of size MxN and NxN, where
+
+- The left matrix is no longer the oroginal matrix
+- The right atrix transforms the data
+- If rank < N, then the N - rank columns will all be zeros (so we can get rid of them); this one might not be intuitive, but worry not–this will probably show up in the homework 
 
 ## Lecture 20, 04/05/22 (Wk11): PCA
+
+### Singular Value Decomposition
 
 -
 
