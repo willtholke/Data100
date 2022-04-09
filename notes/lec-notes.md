@@ -179,8 +179,11 @@
     - [Joins](#joins)
     - [PCA](#pca)
     - [Matrix Decomposition Summary](#matrix-decomposition-summary)
-  - [Lecture 20, 04/05/22 (Wk11): PCA](#lecture-20-040522-wk11-pca)
+  - [Lecture 20, 04/05/22 (Wk11): PCA II](#lecture-20-040522-wk11-pca-ii)
+    - [Principal Component Analysis](#principal-component-analysis)
     - [Singular Value Decomposition](#singular-value-decomposition)
+    - [Principal Component](#principal-component)
+    - [Summary](#summary)
   - [Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression](#lecture-21-041222-wk12-classification-and-logistic-regression)
   - [Lecture 22, 04/14/22 (Wk12): Logistic Regression II](#lecture-22-041422-wk12-logistic-regression-ii)
   - [Lecture 23, 04/19/22 (Wk13): TBD](#lecture-23-041922-wk13-tbd)
@@ -1472,11 +1475,45 @@ Decomposing an MxN matrix `X` into two matrix factors of size MxQ and QxN does n
 - The right atrix transforms the data
 - If rank < N, then the N - rank columns will all be zeros (so we can get rid of them); this one might not be intuitive, but worry not–this will probably show up in the homework 
 
-## Lecture 20, 04/05/22 (Wk11): PCA
+## Lecture 20, 04/05/22 (Wk11): PCA II
+
+### Principal Component Analysis
+
+**Principal Component Analysis (PCA)** is the process of linearly transforming data into a new coordinate system such that the greatest variance occurs along the first dimension, the second most along the second dimension
+
+**PCA is appropriate for EDA when:**
+- Visually identifying clusters of similar observations in high dimensions (greater than R2)
+- You are still exploring the data
+- You have reason to believe that the data are inherently low rank: there are many attributes, but only a few determine the rest through a linear association
+
 
 ### Singular Value Decomposition
 
--
+**Singular Value Decomposition** automatically decomposes a matrix into two matrices
+- left matrix U$\mathcal{E}$ has same dimensionality as original data X
+- right matrix $V^T$ will transform U$\mathcal{E}$ back into X
+- $\mathcal{E}$ is a diagonal matrix; contains the "singular values" of X
+- columns of U and V are an orthonormal set
+
+**Orthonormal vectors:**
+- are all unit vectors, i.e. have length 1
+- vectors are orthogonal
+
+### Principal Component
+
+When performing SVD, we've left the columns in the "data" matrix U$\mathcal{E}$ unnamed;
+- Their common name: "Principal Components"
+- Center data first to get the correct principal components
+
+Compute the fraction of the variance captured in each coordinate:
+```py
+np.round(s**2 / sum(s**2), 2)
+plt.plot(s**2)
+```
+
+### Summary
+
+<img src="images/../../images/lec-20-0.png">
 
 ## Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression
 
