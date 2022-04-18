@@ -186,10 +186,10 @@
     - [Summary](#summary)
   - [Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression](#lecture-21-041222-wk12-classification-and-logistic-regression)
   - [Lecture 22, 04/14/22 (Wk12): Logistic Regression II](#lecture-22-041422-wk12-logistic-regression-ii)
-  - [Lecture 23, 04/19/22 (Wk13): TBD](#lecture-23-041922-wk13-tbd)
-  - [Lecture 24, 04/21/22 (Wk13): Decision Trees](#lecture-24-042122-wk13-decision-trees)
-  - [Lecture 25, 04/26/22 (Wk14): Clustering](#lecture-25-042622-wk14-clustering)
-  - [Lecture 26, 04/28/22 (Wk14): Inference for Modeling](#lecture-26-042822-wk14-inference-for-modeling)
+  - [Lecture 23, 04/19/22 (Wk13): Decision Trees](#lecture-23-041922-wk13-decision-trees)
+  - [Lecture 24, 04/21/22 (Wk13): Clustering](#lecture-24-042122-wk13-clustering)
+  - [Lecture 25, 04/26/22 (Wk14): TBD](#lecture-25-042622-wk14-tbd)
+  - [Lecture 26, 04/28/22 (Wk14): TBD](#lecture-26-042822-wk14-tbd)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -1517,25 +1517,25 @@ plt.plot(s**2)
 
 ## Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression
 
-- 
+Notes to be taken April 18th, 2022
 
 ## Lecture 22, 04/14/22 (Wk12): Logistic Regression II
 
--
+Notes to be taken April 18th, 2022
 
-## Lecture 23, 04/19/22 (Wk13): TBD
-
--
-
-## Lecture 24, 04/21/22 (Wk13): Decision Trees
+## Lecture 23, 04/19/22 (Wk13): Decision Trees
 
 -
 
-
-## Lecture 25, 04/26/22 (Wk14): Clustering
+## Lecture 24, 04/21/22 (Wk13): Clustering
 
 -
 
-## Lecture 26, 04/28/22 (Wk14): Inference for Modeling
+
+## Lecture 25, 04/26/22 (Wk14): TBD
+
+-
+
+## Lecture 26, 04/28/22 (Wk14): TBD
 
 *Note*: Final exam on Friday, 05/13/22 @ 7:00pm-10:00pm
