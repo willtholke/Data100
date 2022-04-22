@@ -1517,20 +1517,19 @@ plt.plot(s**2)
 
 ## Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression
 
-Notes to be taken April 18th, 2022
+Notes to be taken April 22nd, 2022
 
 ## Lecture 22, 04/14/22 (Wk12): Logistic Regression II
 
-Notes to be taken April 18th, 2022
+Notes to be taken April 22nd, 2022
 
 ## Lecture 23, 04/19/22 (Wk13): Decision Trees
 
--
+Notes to be taken April 22nd, 2022
 
 ## Lecture 24, 04/21/22 (Wk13): Clustering
 
--
-
+Notes to be taken April 22nd, 2022
 
 ## Lecture 25, 04/26/22 (Wk14): TBD
 
