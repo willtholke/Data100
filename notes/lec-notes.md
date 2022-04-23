@@ -194,7 +194,9 @@
     - [Context: Why decision trees? What about overfitting? Random forests?](#context-why-decision-trees-what-about-overfitting-random-forests)
     - [Math & Computation](#math--computation)
       - [Node Entropy](#node-entropy)
-      - [Weighted Entropy](#weighted-entropy)
+      - [Weighted Node Entropy](#weighted-node-entropy)
+      - [Gini Impurity](#gini-impurity)
+      - [Variance](#variance)
     - [Other Useful Notes](#other-useful-notes)
   - [Lecture 24, 04/21/22 (Wk13): Clustering](#lecture-24-042122-wk13-clustering)
     - [K-means Algorithm](#k-means-algorithm)
@@ -1642,11 +1644,39 @@ $$
 
 #### Node Entropy
 
-$formula$
+$$ S = -\sum_{C} p_C \log_{2} p_C $$
 
-#### Weighted Entropy
+$p_C$ - proportion of data points in a node with label $C$
 
-$formula$
+This function is a measure of the unpredictability of a node in a decision tree. It can be used to determine the quality of a split.
+
+#### Weighted Node Entropy
+
+$$ L = \frac{N_1 S(X) + N_2 S(Y)}{N_1 + N_2} $$
+
+$N_1$ - number of samples in the left node $X$
+$N_2$ - number of samples in the right node $Y$
+
+This notion of a weighted average can be extended to other metrics such as Gini impurity and variance simply by changing the $S$ (entropy) function to $G$ (Gini impurity) or $\sigma^2$ (variance)
+
+#### Gini Impurity
+
+$$ G = 1 - \sum_{C} {p_C}^2 $$
+
+$p_C$ - proportion of data points in a node with label $C$
+
+The Gini impurity of a node is another metric for determining the quality of a split.
+
+#### Variance
+
+$$ \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2 $$
+
+$\mu$ - mean
+$N$ - total number of data points
+$x_i$ - the value of each data point
+
+The variance is the chance that a sample would be misclassified if randomly assigned at this point. Gini impurity is a popular alternative to entropy for determining the best split at a node, and it is in fact the default criterion for scikit-learn's `DecisionTreeClassifier`.
+
 
 ### Other Useful Notes
 
@@ -1664,18 +1694,12 @@ The advantage of generating and sampling from a random forest over a decision tr
 - **K-means** - optimize a loss function called inertia; most popular approach
 - **Agglomerative** - hierarchical clustering
 
-
-Relation between dendograms and clustering
-What are silhouette scores
-
-
 ### K-means Algorithm
 
 - Pick an arbitrary $k$, and randomly place $k$ "centers," each a different color
 - Repeat until convergence:
   - Color points according to the closest center
   - Move center for each color to center of points with that color
-
 
 ### Loss Functions for Clustering
 
