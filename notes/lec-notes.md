@@ -184,12 +184,16 @@
     - [Singular Value Decomposition](#singular-value-decomposition)
     - [Principal Component](#principal-component)
     - [Summary](#summary)
-  - [Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression](#lecture-21-041222-wk12-classification-and-logistic-regression)
-  - [Lecture 22, 04/14/22 (Wk12): Logistic Regression II](#lecture-22-041422-wk12-logistic-regression-ii)
+  - [Lecture 21 & 22, 04/12/22 & 04/14/22 (Wk12): Logistic Regression I & II](#lecture-21--22-041222--041422-wk12-logistic-regression-i--ii)
+    - [The Modeling Process](#the-modeling-process-1)
+    - [Deifning the Model](#deifning-the-model)
+    - [Empirical Risk](#empirical-risk)
+    - [Fitting and Predicting](#fitting-and-predicting)
+    - [Precision and Recall](#precision-and-recall)
   - [Lecture 23, 04/19/22 (Wk13): Decision Trees](#lecture-23-041922-wk13-decision-trees)
   - [Lecture 24, 04/21/22 (Wk13): Clustering](#lecture-24-042122-wk13-clustering)
-  - [Lecture 25, 04/26/22 (Wk14): TBD](#lecture-25-042622-wk14-tbd)
-  - [Lecture 26, 04/28/22 (Wk14): TBD](#lecture-26-042822-wk14-tbd)
+  - [Lecture 25, 04/26/22 (Wk14): Guest Speaker: Amol Deshpande - Data Regulations](#lecture-25-042622-wk14-guest-speaker-amol-deshpande---data-regulations)
+  - [Lecture 26, 04/28/22 (Wk14): Guest Speaker: Matei Zaharia - Parallel Data Analytics](#lecture-26-042822-wk14-guest-speaker-matei-zaharia---parallel-data-analytics)
 
 ## Lecture 1, 01/18/22 (Wk1): Course Overview
 
@@ -1515,26 +1519,88 @@ plt.plot(s**2)
 
 <img src="images/../../images/lec-20-0.png">
 
-## Lecture 21, 04/12/22 (Wk12): Classification and Logistic Regression
+## Lecture 21 & 22, 04/12/22 & 04/14/22 (Wk12): Logistic Regression I & II
 
-Notes to be taken April 22nd, 2022
+*Note*: since there's a lot of content to sift through in this lecture, I've briefly summarized the most important aspects of the topic of logistic regression. To render the $\LaTeX$ in these notes, I highly suggest downloading [Visual Studio Code](https://code.visualstudio.com/) to preview the notes in [Markdown](https://code.visualstudio.com/docs/languages/markdown).
 
-## Lecture 22, 04/14/22 (Wk12): Logistic Regression II
+Now we're going to be moving on from using PCA to visiualize high dimensionality data to **logistic regression**.
+In classification, the **parametric model** uses a feature x to predict $\hat{y}$ (true response y).
 
-Notes to be taken April 22nd, 2022
+### The Modeling Process 
+
+1) Choose a model
+   - $\hat{y} = f_\theta(x) = x^T\theta$
+2) Choose a loss function
+   - Squares Loss or Absolute Loss
+3) Fit the model
+   - Regularization, Sklearn/Gradient descent
+4) Evaluate model performance
+   - $R^2$, Residuals, etc.
+
+
+### Deifning the Model
+
+The Logistic Regression model:
+
+$$f_\theta(x)=\sigma(^T\theta)$$
+
+Recall that the sigmoid function is as follows:
+
+$$\sigma(z) = \frac{1}{1 + e^-z}$$
+
+If we have $n$ datapoints and $p$ features, then we can construct the design matrix:
+
+$$\mathbb{X} \in \mathbb{R}^{n \times (p+1)}$$
+
+Construct a matrix representation of the Logistic Regression Model. The $i$-th element of $\hat{\mathbb{Y}}$ is the probability that the $i$-th observation belongs to class 1, given the feature vector is the $i$-th row of the design matri $\mathbb{X}$ and the parameter vector is $\theta$:
+
+$$\hat{\mathbb{Y}} = \sigma(\mathbb{X}\theta)$$
+
+### Empirical Risk
+
+For the logistic regression model, the **empirical risk** is therefore defined as the average cross-entropy loss across all $n$ datapoints:
+
+$$\Large R(\theta) = -\frac{1}{n} \sum_{i=1}^n \left( y_i \log(\sigma(X_i^T \theta)) + (1 - y_i) \log(1 - \sigma(X_i^T \theta))  \right) $$
+
+Note that $y_i$ is the $i-$th response in our dataset, $\theta$ are the parameters of our model, $X_i$ is the i'th row of our design matrix $\mathbb{X}$, and $\sigma(X_i^T \theta)$ is the probability that the response is 1 given input $X_i$.
+
+### Fitting and Predicting
+
+* For logistic regression with parameter $\theta$, $P(Y = 1 | x) = \sigma(x^T \theta)$, where $\sigma$ is the sigmoid function and $x$ is a feature vector. Therefore $\sigma(x^T \theta)$ is the Bernoulli probability that the response is 1 given the feature is $x$ Otherwise the response is 0 with probability $P(Y = 0 | x) = 1 - \sigma(x^T \theta)$.
+* The $\hat{\theta}$ that *minimizes* average log-entropy loss of our training data also *maximizes* the likelihood of observing the training data according to the logistic regression model (check out lecture for more details).
+
+The main takeaway is that logistic regression models **probabilities** of classifying datapoints as 1 or 0.
+
+### Precision and Recall
+
+- **Precision** (also called positive predictive value) is the fraction of true positives among the total number of data points predicted as positive.
+- **Recall** (also known as sensitivity) is the fraction of true positives among the total number of data points with positive labels.
+
+<img src="images/../../images/lec-21-0.png">
+
+$$
+\text{Precision} = \frac{n_{true\_positives}}{n_{true\_positives} + n_{false\_positives}}
+$$
+
+$$
+\text{Recall} = \frac{n_{true\_positives}}{n_{true\_positives} + n_{false\_negatives}}
+$$
 
 ## Lecture 23, 04/19/22 (Wk13): Decision Trees
 
 Notes to be taken April 22nd, 2022
 
+
 ## Lecture 24, 04/21/22 (Wk13): Clustering
 
 Notes to be taken April 22nd, 2022
 
-## Lecture 25, 04/26/22 (Wk14): TBD
+## Lecture 25, 04/26/22 (Wk14): Guest Speaker: Amol Deshpande - Data Regulations
 
--
+Notes to be taken April 26th, 2022
 
-## Lecture 26, 04/28/22 (Wk14): TBD
+## Lecture 26, 04/28/22 (Wk14): Guest Speaker: Matei Zaharia - Parallel Data Analytics
+
+Notes to be taken April 28th, 2022
 
 *Note*: Final exam on Friday, 05/13/22 @ 7:00pm-10:00pm
