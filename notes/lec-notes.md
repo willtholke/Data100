@@ -197,6 +197,11 @@
       - [Weighted Entropy](#weighted-entropy)
     - [Other Useful Notes](#other-useful-notes)
   - [Lecture 24, 04/21/22 (Wk13): Clustering](#lecture-24-042122-wk13-clustering)
+    - [K-means Algorithm](#k-means-algorithm)
+    - [Loss Functions for Clustering](#loss-functions-for-clustering)
+    - [Agglomerative Clustering Algorithm](#agglomerative-clustering-algorithm)
+    - [Hierarchies and Other Concepts](#hierarchies-and-other-concepts)
+    - [Silhouette Scores](#silhouette-scores)
   - [Lecture 25, 04/26/22 (Wk14): Guest Speaker: Amol Deshpande - Data Regulations](#lecture-25-042622-wk14-guest-speaker-amol-deshpande---data-regulations)
   - [Lecture 26, 04/28/22 (Wk14): Guest Speaker: Matei Zaharia - Parallel Data Analytics](#lecture-26-042822-wk14-guest-speaker-matei-zaharia---parallel-data-analytics)
 
@@ -1653,7 +1658,63 @@ The advantage of generating and sampling from a random forest over a decision tr
 
 ## Lecture 24, 04/21/22 (Wk13): Clustering
 
-Notes to be taken April 22nd, 2022
+**Clustering** - algorithms used in unsupervised learning to identify patterns in unlabaled data; clustering does so *automatically*
+
+*Approaches to Clustering*:
+- **K-means** - optimize a loss function called inertia; most popular approach
+- **Agglomerative** - hierarchical clustering
+
+
+Relation between dendograms and clustering
+What are silhouette scores
+
+
+### K-means Algorithm
+
+- Pick an arbitrary $k$, and randomly place $k$ "centers," each a different color
+- Repeat until convergence:
+  - Color points according to the closest center
+  - Move center for each color to center of points with that color
+
+
+### Loss Functions for Clustering
+
+Every time K-means is run, there is a different output (depending on where the centers started). We need loss functions to minimize inertia.
+
+*Loss functions for clustering*:
+
+- **Inertia** - Sum of squared distances from each data point to its center
+- **Distortion** - weighted sum of squared distances from each data point to its center
+
+K-means minimizes **inertia** in specific, and often fails to find the global optimum. To this day, there is no known optimal solution to optimizing inertia.
+
+### Agglomerative Clustering Algorithm
+
+- Every data point starts as its own cluster
+- Until we only have $K$ clusters left:
+  - Join clusters with their closest neighbors
+
+*Note*: select $K$ based on subjective measures
+
+### Hierarchies and Other Concepts
+
+**Agglomerative clustering**, a form of hierarchical clustering, can allow us to visualize a merging hierarchy in a "dendogram"
+
+**Agglomerative clustering** is also used in the assignment of grading bins
+
+### Silhouette Scores
+
+**Silhouette Scores** - used to evaluate how "well clustered" a specific data point is
+
+- **High score:** near the other points in its cluster
+- **Low score:** far from the other points in its cluster
+
+*For a data point $X$, the score $S$ is calcualted as:*
+- $A$ = average distance to other points in cluster
+- $B$ = average distance to points in closest cluster
+- $S = \frac{B - A}{\texttt{max}(A, B)}$
+
+*Note*: the highest possible $S$ is 1, which happens when every point in $X$'s cluster is right on top of $X$
 
 ## Lecture 25, 04/26/22 (Wk14): Guest Speaker: Amol Deshpande - Data Regulations
 
