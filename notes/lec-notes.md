@@ -1718,10 +1718,10 @@ K-means minimizes **inertia** in specific, and often fails to find the global op
 
 ## Lecture 25, 04/26/22 (Wk14): Guest Speaker: Amol Deshpande - Data Regulations
 
-Notes to be taken April 26th, 2022
+N/A
 
 ## Lecture 26, 04/28/22 (Wk14): Guest Speaker: Matei Zaharia - Parallel Data Analytics
 
-Notes to be taken April 28th, 2022
+N/A
 
 *Note*: Final exam on Friday, 05/13/22 @ 7:00pm-10:00pm
