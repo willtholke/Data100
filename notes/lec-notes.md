@@ -191,6 +191,11 @@
     - [Fitting and Predicting](#fitting-and-predicting)
     - [Precision and Recall](#precision-and-recall)
   - [Lecture 23, 04/19/22 (Wk13): Decision Trees](#lecture-23-041922-wk13-decision-trees)
+    - [Context: Why decision trees? What about overfitting? Random forests?](#context-why-decision-trees-what-about-overfitting-random-forests)
+    - [Math & Computation](#math--computation)
+      - [Node Entropy](#node-entropy)
+      - [Weighted Entropy](#weighted-entropy)
+    - [Other Useful Notes](#other-useful-notes)
   - [Lecture 24, 04/21/22 (Wk13): Clustering](#lecture-24-042122-wk13-clustering)
   - [Lecture 25, 04/26/22 (Wk14): Guest Speaker: Amol Deshpande - Data Regulations](#lecture-25-042622-wk14-guest-speaker-amol-deshpande---data-regulations)
   - [Lecture 26, 04/28/22 (Wk14): Guest Speaker: Matei Zaharia - Parallel Data Analytics](#lecture-26-042822-wk14-guest-speaker-matei-zaharia---parallel-data-analytics)
@@ -1524,7 +1529,6 @@ plt.plot(s**2)
 *Note*: since there's a lot of content to sift through in this lecture, I've briefly summarized the most important aspects of the topic of logistic regression. To render the $\LaTeX$ in these notes, I highly suggest downloading [Visual Studio Code](https://code.visualstudio.com/) to preview the notes in [Markdown](https://code.visualstudio.com/docs/languages/markdown).
 
 Now we're going to be moving on from using PCA to visiualize high dimensionality data to **logistic regression**.
-In classification, the **parametric model** uses a feature x to predict $\hat{y}$ (true response y).
 
 ### The Modeling Process 
 
@@ -1588,8 +1592,64 @@ $$
 
 ## Lecture 23, 04/19/22 (Wk13): Decision Trees
 
-Notes to be taken April 22nd, 2022
+### Context: Why decision trees? What about overfitting? Random forests?
 
+**Decision Trees** - alternate way to classify data; tree of questions that must be answered in a sequence to get a predicted classification. Offers a non-linear framework for classification and regression.
+
+*Advantages:*
+- Able to capture non-linear relationships
+- Output is interpretable (traceable on the tree)
+- Regression is straightforward
+
+*Disadvantages:*
+- High danger of overfitting (model fits exactly against its training data)
+- Complex decision boundaries
+- Mathematically unkind
+
+*Prevent overfitting by:*
+
+- deterministically limiting the depth of a tree
+- pruning irrelevant branches
+- using random forests
+
+*How decision trees are created*:
+- data starts in root node
+- until every node is either **pure** or **unsplittable**, 
+  1) pick the best feature $x$ and best split value
+  2) split the data into two nodes
+
+**Pure Node** - has only samples from one class
+
+**Unsplittable Node** - has overlapping data points from different classes; cannot be split
+
+**Node Entropy** - measure of disorder/unpredictabiility in a node; low entropy $\implies$ more predictable, high entropy $\implies$ less predictable
+
+**Random Forest** - simple idea of generating multiple decision trees on one dataset and then voting on some point $(x, y)$
+
+*How do we generate random forests?*
+- Generate bootstrap resamples of training data
+- Fit one model for each resample
+- Final model = average predictions of each small model
+
+### Math & Computation
+
+*Will be updated soon*
+
+#### Node Entropy
+
+$formula$
+
+#### Weighted Entropy
+
+$formula$
+
+### Other Useful Notes
+
+When creating a decision tree for classification, we might end up having a terminal node that has more than one class if **we limit the maximum depth of the decision tree**.
+
+Suppose that one terminal decision tree node contains 22 **A** values and 12 **B** values. We want to *make a prediction* and our sequence of yes/no questions leads us to this node. Instead of giving a probability of **A**, refusing to make a prediction, or doing something else, we **predict that the class is A**.
+
+The advantage of generating and sampling from a random forest over a decision tree is that there is *lower variability*; keep in mind that, due to the bias-variance tradeoff, there's higher bias.
 
 ## Lecture 24, 04/21/22 (Wk13): Clustering
 
